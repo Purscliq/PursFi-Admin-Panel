@@ -19,7 +19,7 @@ const ClienteleTable = () => {
 
   const totalPages = Math.ceil(ClienteleTableData.length / itemsPerPage);
 
-  const handlePageChange = (newPage:any) => {
+  const handlePageChange = (newPage: any) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
     }
@@ -42,10 +42,6 @@ const ClienteleTable = () => {
 
   return (
     <section>
-      {/* <div className="w-full md:max-h-24 md:flex justify-between px-8 py-6 bg-white rounded-2xl border border-[#D6DDEB]">
-        Clientele Table
-      </div> */}
-
       <div>
         <div className="space-y-8">
           <div className="overflow-x-auto">
@@ -81,21 +77,14 @@ const ClienteleTable = () => {
               {/* Table body */}
               {displayedData.map((item, index) => (
                 <tbody key={index}>
-                  <tr className="hover:bg-white bg-gray-50 text-[#25324B] font-medium border-b">
-                    <td className="px-6 py-4 font-semibold text-[0.8375rem]">
-                      {item.businessname}
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-[0.8375rem]">
-                      {item.type}
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-[0.8375rem]">
-                      {item.account}
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-[0.8375rem]">
-                      {item.email}
-                    </td>
-                    <td className="px-4 py-4 text-[0.8375rem] flex gap-5">
-                      <Link href="/clientele/details">
+                  <tr className="hover:bg-white bg-gray-50 text-base text-[#25324B] font-normal border-b">
+                    <td className="px-6 py-4">{item.businessname}</td>
+                    <td className="px-6 py-4">{item.type}</td>
+                    <td className="px-6 py-4 text-black">{item.account}</td>
+                    <td className="px-6 py-4">{item.email}</td>
+                    <td className="px-4 py-4 flex gap-5">
+                      {/* <Link href={`/clientele/details/${item.id}`}> */}
+                      <Link href={`/clientele/details`}>
                         <button className="btn text-sm rounded-none normal-case  text-black bg-[#F3F8EA] border border-black hover:border  hover:border-black hover:bg-black/20 font-semibold">
                           View Details
                         </button>
