@@ -1,7 +1,7 @@
 import React from "react";
 import DashboardChart from "./DashboardChart";
-import { Segmented } from "antd";
 import DashboardTable from "./DashboardTable";
+import { CustomSegment as Segmented } from "@/lib/AntdComponents";
 
 const Dashbord = () => {
   const date = new Date();
@@ -50,13 +50,6 @@ const Dashbord = () => {
             </span>
             <Segmented
               options={["Week", "Month", "Year"]}
-              style={{
-                background: "#F3F8EA",
-                padding: "10px 5px",
-                color: "#0000",
-                fontSize: "16px",
-                border: "20px",
-              }}
             />
           </div>
           <DashboardChart />

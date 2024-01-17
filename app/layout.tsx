@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={`${archivo.className} bg-[#FAFAFA]`}>
+      <body className={`${archivo.className} !bg-[#FAFAFA]`}>
         <AntdConfig>
          {children}
         </AntdConfig>

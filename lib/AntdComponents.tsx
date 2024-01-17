@@ -39,11 +39,13 @@ import {
 } from "antd";
 import { TextAreaProps } from "antd/es/input";
 import { Archivo } from "next/font/google";
+import React from "react";
 const archivo = Archivo({ subsets: ["latin"] });
 const primaryConfig = {
   fontFamily: archivo.style.fontFamily,
   colorPrimary: "#000000",
 };
+
 
 export const CustomButton = ({ ...props }: ButtonProps) => (
   <ConfigProvider theme={{ token: { ...primaryConfig, borderRadius: 5 } }}>
@@ -224,34 +226,44 @@ export const CustomMenu = ({ ...props }: MenuProps) => (
         borderRadius: 5,
         fontSize: 16,
         ...primaryConfig,
-      },
-      components: {
-        Menu: {},
+        colorPrimaryBg: '#F3F8EA',
+        colorBgTextActive:"#000000",
       },
     }}
   >
     <Menu {...props} />
   </ConfigProvider>
 );
-export const CustomSegment = () => (
+export const CustomSegment = (
+  { ...props }: SegmentedProps,
+  ref: React.Ref<HTMLDivElement>
+) => (
   <ConfigProvider
     theme={{
       token: {
         borderRadius: 5,
         fontSize: 16,
-        ...primaryConfig,
+        // ...primaryConfig, // Assuming primaryConfig is defined elsewhere
       },
       components: {
         Segmented: {
           trackBg: "#F3F8EA",
-          trackPadding: 2,
+          trackPadding: 6,
+          borderRadius:20,
+          padding:4
         },
       },
     }}
   >
-    <Segmented options={[]} />
+    <Segmented {...props} ref={ref} />
   </ConfigProvider>
 );
+
+const ForwardedCustomSegment = React.forwardRef<HTMLDivElement, SegmentedProps>(
+  CustomSegment
+);
+
+export default ForwardedCustomSegment;
 
 export const CustomSwitch = ({ ...props }: SwitchProps) => (
   <ConfigProvider theme={{ token: { ...primaryConfig } }}>
