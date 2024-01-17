@@ -19,7 +19,7 @@ const ClienteleTable = () => {
 
   const totalPages = Math.ceil(ClienteleTableData.length / itemsPerPage);
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage:any) => {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
     }
