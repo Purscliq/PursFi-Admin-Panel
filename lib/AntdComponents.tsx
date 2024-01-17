@@ -34,6 +34,8 @@ import {
   TooltipProps,
   Modal,
   ModalProps,
+  SegmentedProps,
+  Segmented,
 } from "antd";
 import { TextAreaProps } from "antd/es/input";
 import { Archivo } from "next/font/google";
@@ -42,7 +44,6 @@ const primaryConfig = {
   fontFamily: archivo.style.fontFamily,
   colorPrimary: "#000000",
 };
-
 
 export const CustomButton = ({ ...props }: ButtonProps) => (
   <ConfigProvider theme={{ token: { ...primaryConfig, borderRadius: 5 } }}>
@@ -230,6 +231,25 @@ export const CustomMenu = ({ ...props }: MenuProps) => (
     }}
   >
     <Menu {...props} />
+  </ConfigProvider>
+);
+export const CustomSegment = () => (
+  <ConfigProvider
+    theme={{
+      token: {
+        borderRadius: 5,
+        fontSize: 16,
+        ...primaryConfig,
+      },
+      components: {
+        Segmented: {
+          trackBg: "#F3F8EA",
+          trackPadding: 2,
+        },
+      },
+    }}
+  >
+    <Segmented options={[]} />
   </ConfigProvider>
 );
 
