@@ -85,7 +85,7 @@ const ClienteleTable = () => {
                     <td className="px-4 py-4 flex gap-5">
                       {/* <Link href={`/clientele/details/${item.id}`}> */}
                       <Link href={`/clientele/details`}>
-                        <button className="btn text-sm rounded-none normal-case  text-black bg-[#F3F8EA] border border-black hover:border  hover:border-black hover:bg-black/20 font-semibold">
+                        <button className="btn btn-sm text-sm rounded-none normal-case  text-black bg-[#F3F8EA] border border-black hover:border  hover:border-black hover:bg-[#F3F8EA] font-semibold">
                           View Details
                         </button>
                       </Link>

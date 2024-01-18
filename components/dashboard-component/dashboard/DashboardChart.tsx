@@ -1,4 +1,6 @@
 "use client";
+"--tsx";
+
 import { Column } from "@ant-design/plots";
 
 const DashboardChart = () => {
@@ -38,7 +40,7 @@ const DashboardChart = () => {
     xField: "type",
     yField: "sales",
     style: {
-      fill:  "#000",
+      fill: "#000",
     },
     columnWidthRatio: 0.8,
     xAxis: {

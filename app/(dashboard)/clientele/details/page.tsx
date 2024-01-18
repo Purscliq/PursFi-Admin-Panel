@@ -1,8 +1,16 @@
 import Details from "@/components/dashboard-component/clientele/details/Details";
-import React from "react";
 
 const ClienteleDetails = () => {
-  return <Details />;
+  // const router = useRouter();
+  // const { id } = router.query;
+
+  // // Ensure id is a number
+  // const detailsData =
+  //   typeof id === "string"
+  //     ? ClienteleTableData.find((item) => item.id ===id) || null
+  //     : null;
+
+  return <Details  />;
 };
 
 export default ClienteleDetails;
