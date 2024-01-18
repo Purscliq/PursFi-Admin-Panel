@@ -46,7 +46,6 @@ const primaryConfig = {
   colorPrimary: "#000000",
 };
 
-
 export const CustomButton = ({ ...props }: ButtonProps) => (
   <ConfigProvider theme={{ token: { ...primaryConfig, borderRadius: 5 } }}>
     <Button {...props} />
@@ -101,25 +100,6 @@ export const CustomRadioGroup = ({ ...props }: RadioGroupProps) => (
     <Radio.Group {...props} />
   </ConfigProvider>
 );
-export const CustomTabs = ({ ...props }: TabsProps) => (
-  <ConfigProvider
-    theme={{
-      token: { ...primaryConfig },
-      components: {
-        Tabs: {
-          itemSelectedColor: "#181336",
-          itemActiveColor: "#181336",
-          itemColor: "#515B6F",
-          fontSize: 16,
-          fontWeightStrong: 600,
-        },
-      },
-    }}
-  >
-    <Tabs {...props} />
-  </ConfigProvider>
-);
-
 export const CustomUpload = ({ ...props }: UploadProps) => (
   <ConfigProvider theme={{ token: { ...primaryConfig } }}>
     <Upload {...props} />
@@ -226,12 +206,36 @@ export const CustomMenu = ({ ...props }: MenuProps) => (
         borderRadius: 5,
         fontSize: 16,
         ...primaryConfig,
-        colorPrimaryBg: '#F3F8EA',
-        colorBgTextActive:"#000000",
+        colorPrimaryBg: "#F3F8EA",
+        colorBgTextActive: "#000000",
       },
     }}
   >
     <Menu {...props} />
+  </ConfigProvider>
+);
+const secConfig = {
+  fontFamily: archivo.style.fontFamily,
+  colorPrimary: "#5B8A52",
+};
+export const CustomTabs = ({ ...props }: TabsProps) => (
+  <ConfigProvider
+    theme={{
+      token: { ...secConfig },
+      components: {
+        Tabs: {
+          itemSelectedColor: "#0AA07B",
+          colorLinkActive: "#F3F8EA",
+
+          // itemActiveColor: "#0AA07B",
+          itemColor: "#515B6F",
+          fontSize: 16,
+          fontWeightStrong: 600,
+        },
+      },
+    }}
+  >
+    <Tabs {...props} />
   </ConfigProvider>
 );
 export const CustomSegment = (
@@ -249,8 +253,8 @@ export const CustomSegment = (
         Segmented: {
           trackBg: "#F3F8EA",
           trackPadding: 6,
-          borderRadius:20,
-          padding:4
+          borderRadius: 20,
+          padding: 4,
         },
       },
     }}

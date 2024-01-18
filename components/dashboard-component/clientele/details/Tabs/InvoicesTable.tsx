@@ -4,16 +4,17 @@ import {
   CustomTable as Table,
   CustomDatePicker as DatePicker,
   CustomInput as Input,
+  CustomSelect as Select,
 } from "@/lib/AntdComponents";
 import FilterIcon from "@/assets/svg/FilterIcon";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 
 interface DataType {
   name: string;
-  date: string;
-  purpose: string;
-  type: string;
+  issueDate: string;
+  dueDate: string;
   amount: string;
+  status: string;
 }
 
 export interface TableParams {
@@ -22,40 +23,24 @@ export interface TableParams {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Date",
-    sorter: true,
-    dataIndex: "date",
-    render: (date) => `${date}`,
-    width: "20%",
-  },
-  {
-    title: "Full Name",
+    title: "Client Name",
     sorter: true,
     dataIndex: "name",
     render: (name) => `${name}`,
     width: "20%",
   },
   {
-    title: "Purpose",
+    title: "Issue Date",
     sorter: true,
-    dataIndex: "purpose",
-    render: (purpose) => `${purpose}`,
+    dataIndex: "issueDate",
+    render: (issueDate) => `${issueDate}`,
     width: "20%",
   },
   {
-    title: "type",
+    title: "Due Date",
     sorter: true,
-    dataIndex: "type",
-    render: (type) =>
-      type === "Credit" ? (
-        <span className="p-[4%] rounded-[80px] bg-[#FF39561A]/[10%] text-[#FF3956] text-center text-[14px] font-[600]">
-          {type}
-        </span>
-      ) : (
-        <span className="p-[4%] rounded-[80px] bg-[#0AA07B]/[10%] text-[#0AA07B] text-center text-[14px] font-[600]">
-          {type}
-        </span>
-      ),
+    dataIndex: "dueDate",
+    render: (dueDate) => `${dueDate}`,
     width: "20%",
   },
   {
@@ -63,6 +48,22 @@ const columns: ColumnsType<DataType> = [
     sorter: true,
     dataIndex: "amount",
     render: (amount) => `${amount}`,
+    width: "20%",
+  },
+  {
+    title: "Status",
+    sorter: true,
+    dataIndex: "status",
+    render: (type) =>
+      type === "Unpaid" ? (
+        <span className="p-[4%] rounded-[80px] bg-[#1699F81A]/[10%] text-[#1699F8] text-center text-[14px] font-[600]">
+          {type}
+        </span>
+      ) : (
+        <span className="p-[4%] rounded-[80px] bg-[#0AA07B]/[10%] text-[#0AA07B] text-center text-[14px] font-[600]">
+          {type}
+        </span>
+      ),
     width: "20%",
   },
   {
@@ -80,7 +81,7 @@ const getRandomuserParams = (params: TableParams) => ({
   ...params,
 });
 
-const DashboardTable = () => {
+const InvoicesTable = () => {
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);
   const [tableParams, setTableParams] = useState<TableParams>({
@@ -121,11 +122,15 @@ const DashboardTable = () => {
   };
 
   return (
-    <div className="bg-white flex flex-col gap-[1rem] p-[2%]">
-      <h4 className="text-[#515B6F] text-[19px] font-[600]">Transaction</h4>
+    <div className="bg-white flex flex-col gap-[1rem] py-[2%]">
       <div className="flex items-center justify-start w-full gap-[1rem]">
-        <DatePicker className="h-fit w-fit" placeholder="Start Date" />
-        <DatePicker className="h-fit w-fit" placeholder="End Date" />
+        <DatePicker className="h-max w-max" placeholder="Start" />
+        <DatePicker className="h-fit w-fit" placeholder="End" />
+        <Select className="w-fit h-fit text-[#899A9A]" defaultValue="">
+          <option value="">Type</option>
+          <option value="cash">Cash</option>
+          <option value="transfer">Transfer</option>
+        </Select>
         <div className="w-fit">
           <Input className="h-fit w-fit" placeholder="Amount" />
         </div>
@@ -149,4 +154,4 @@ const DashboardTable = () => {
   );
 };
 
-export default DashboardTable;
+export default InvoicesTable;

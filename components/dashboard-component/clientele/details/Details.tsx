@@ -4,8 +4,8 @@ import Link from "next/link";
 
 import { GoArrowLeft } from "react-icons/go";
 import { DeactivateAccountModal } from "./DeactivateAccountModal";
-import type { ConfigProviderProps, RadioChangeEvent } from "antd";
-import { Tabs } from "antd";
+import { CustomTabs as Tabs } from "@/lib/AntdComponents";
+import type { TabsProps } from "antd";
 
 // tab components
 import BusinessDetailsTab from "./Tabs/BusinessDetailsTab";
@@ -14,33 +14,37 @@ import TransactionsTab from "./Tabs/TransactionsTab";
 import RecentActivitiesTab from "./Tabs/RecentActivitiesTab";
 import KycTab from "./Tabs/KYCTab";
 
-type SizeType = ConfigProviderProps["componentSize"];
+const items: TabsProps["items"] = [
+  {
+    key: "1",
+    label: "Business Details",
+    children: <BusinessDetailsTab />,
+  },
+  {
+    key: "2",
+    label: "Transactions",
+    children: <TransactionsTab />,
+  },
+  {
+    key: "3",
+    label: "Invoices",
+    children: <InvoicesTab />,
+  },
+  {
+    key: "4",
+    label: "Recent Activities",
+    children: <RecentActivitiesTab />,
+  },
+  {
+    key: "5",
+    label: "KYC",
+    children: <KycTab />,
+  },
+];
 
-const Details = () => {
-  const [size, setSize] = useState<SizeType>("small");
-
-  const onChange = (e: RadioChangeEvent) => {
-    setSize(e.target.value);
-  };
-
-  const tabHeaders = [
-    "Business Details",
-    "Transactions",
-    "Invoices",
-    "Recent Activities",
-    "KYC",
-  ];
-
-  const tabContent = [
-    <BusinessDetailsTab />,
-    <TransactionsTab />,
-    <InvoicesTab />,
-    <RecentActivitiesTab />,
-    <KycTab />,
-  ];
-
+const Details: React.FC = () => {
   return (
-    <section className="max-w-[1640px] flex flex-col p-4  h-screen overflow-y-scroll">
+    <section className="max-w-[1640px] bg-white flex flex-col p-4  h-screen overflow-y-scroll">
       <div className="md:flex justify-between border-b">
         <span className="flex gap-2">
           <Link href="/clientele" className="py-2" title="Back to Clientele">
@@ -61,20 +65,7 @@ const Details = () => {
       </div>
 
       <div className="mt-10">
-        <Tabs
-          defaultActiveKey="1"
-          className="text-green-400"
-          type="card"
-          size={size}
-          style={{ marginBottom: 0 }}
-          tabBarGutter={15}
-        >
-          {tabHeaders.map((label, index) => (
-            <Tabs.TabPane tab={label} key={String(index + 1)}>
-              {tabContent[index]}
-            </Tabs.TabPane>
-          ))}
-        </Tabs>
+        <Tabs defaultActiveKey="1" items={items} tabBarGutter={15} />;
       </div>
     </section>
   );
