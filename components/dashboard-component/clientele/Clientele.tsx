@@ -35,22 +35,22 @@ const Clientele = () => {
       {/* search and filter */}
       <div className="mt-8">
         <div className="w-full md:max-h-24 md:flex justify-between px-8 py-6 bg-white rounded-[1.25rem] border border-[#D6DDEB]">
-          <div className="relative w-full md:w-[30rem]">
-            <CiSearch className="absolute top-0 bottom-0 w-6 h-6 my-auto text-gray-400 left-3" />
+          <div className="relative w-full md:w-[29rem]">
+            <CiSearch className="absolute top-0 bottom-0 w-6 h-6 text-[#A8ADB7] my-auto left-3" />
             <input
               type="text"
               placeholder="Search"
-              className="w-full py-3 pl-12 pr-4 border rounded-[0.25rem] outline-none focus:!bg-white focus:border-gray-400"
+              className="w-full py-3 pl-12 pr-4 border rounded-[0.25rem] outline-none bg-inherit border-[#D6DDEB]"
             />
           </div>
 
           <div className="flex gap-4 mt-4 md:mt-0">
-            <button className="p-4 md:py-0 text-sm rounded-[0.25rem] border border-[#D6DDEB]">
+            <button className="p-4 md:py-0 text-base rounded-[0.25rem] border border-[#D6DDEB]">
               <LuListFilter className="w-4 h-4 inline" /> {"  "}
               Filter
             </button>
 
-            <button className="p-4 md:py-0 text-white text-sm bg-black rounded-[0.25rem]">
+            <button className="p-4 md:py-0 text-white text-[0.875rem] bg-black rounded-[0.25rem]">
               Export csv
             </button>
           </div>

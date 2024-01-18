@@ -22,29 +22,29 @@ export interface TableParams {
 
 const columns: ColumnsType<DataType> = [
   {
-    title:"Date",
-    sorter:true,
+    title: "Date",
+    sorter: true,
     dataIndex: "date",
     render: (date) => `${date}`,
     width: "20%",
   },
   {
-    title:"Full Name",
-    sorter:true,
+    title: "Full Name",
+    sorter: true,
     dataIndex: "name",
     render: (name) => `${name}`,
     width: "20%",
   },
   {
-    title:"Purpose",
-    sorter:true,
+    title: "Purpose",
+    sorter: true,
     dataIndex: "purpose",
     render: (purpose) => `${purpose}`,
     width: "20%",
   },
   {
     title: "type",
-    sorter:true,
+    sorter: true,
     dataIndex: "type",
     render: (type) =>
       type === "Credit" ? (
@@ -59,15 +59,15 @@ const columns: ColumnsType<DataType> = [
     width: "20%",
   },
   {
-    title:"Amount",
-    sorter:true,
+    title: "Amount",
+    sorter: true,
     dataIndex: "amount",
     render: (amount) => `${amount}`,
     width: "20%",
   },
   {
-    title:"Action",
-    sorter:true,
+    title: "Action",
+    sorter: true,
     dataIndex: "_id",
     render: (id) => `...`,
     width: "20%",
@@ -122,9 +122,7 @@ const DashboardTable = () => {
 
   return (
     <div className="bg-white flex flex-col gap-[1rem] p-[2%]">
-      <h4 className="text-[#515B6F] text-[19px] font-[600]">
-        Transaction 
-      </h4>
+      <h4 className="text-[#515B6F] text-[19px] font-[600]">Transaction</h4>
       <div className="flex items-center justify-start w-full gap-[1rem]">
         <DatePicker className="h-fit w-fit" placeholder="Start Date" />
         <DatePicker className="h-fit w-fit" placeholder="End Date" />

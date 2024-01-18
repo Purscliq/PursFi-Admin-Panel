@@ -27,7 +27,7 @@ export function DeactivateAccountModal() {
       </button>
 
       <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
+        <div className="modal-box bg-inherit">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -35,26 +35,23 @@ export function DeactivateAccountModal() {
             </button>
           </form>
 
-          <div>
-            <div className="border-b pb-1">
-              <h1 className="font-bold text-[#242F57] text-[1.5625rem]">
-                Account Deactivation
-              </h1>
-              <p className="text-[#636E95] text-base">
-                Deactivating this account will disable the business from using
-                it
-              </p>
-            </div>
-            <div className="mt-8">
-              <p className="text-[#25324B] text-base">Give reason</p>
-              <textarea
-                required
-                className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-              ></textarea>
-              <p className="text-[#F6513B] text-center">
-                Are you sure you want to deactivate this account
-              </p>
-            </div>
+          <div className="border-b pb-1">
+            <h1 className="font-bold text-[#242F57] text-[1.5625rem]">
+              Account Deactivation
+            </h1>
+            <p className="text-[#636E95] text-base">
+              Deactivating this account will disable the business from using it
+            </p>
+          </div>
+          <div className="mt-8">
+            <p className="text-[#25324B] text-base">Give reason</p>
+            <textarea
+              required
+              className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+            ></textarea>
+            <p className="text-[#F6513B] text-center">
+              Are you sure you want to deactivate this account
+            </p>
           </div>
         </div>
       </dialog>

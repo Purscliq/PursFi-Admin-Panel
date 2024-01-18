@@ -47,7 +47,7 @@ const ClienteleTable = () => {
           <div className="overflow-x-auto">
             <table className="w-full table-auto text-sm text-left text-[#181336]">
               {/* Table header */}
-              <thead className="text-xs text-[#25324B] border-b">
+              <thead className="text-xs text-[#7C8493] border-b-2">
                 <tr>
                   <th scope="col" className="px-6 py-3 text-base font-normal">
                     Business Name <HiMiniChevronUpDown className="inline" />
@@ -77,7 +77,7 @@ const ClienteleTable = () => {
               {/* Table body */}
               {displayedData.map((item, index) => (
                 <tbody key={index}>
-                  <tr className="hover:bg-white bg-gray-50 text-base text-[#25324B] font-normal border-b">
+                  <tr className="bg-white hover:bg-gray-50 text-base text-[#25324B] font-normal border-b">
                     <td className="px-6 py-4">{item.businessname}</td>
                     <td className="px-6 py-4">{item.type}</td>
                     <td className="px-6 py-4 text-black">{item.account}</td>

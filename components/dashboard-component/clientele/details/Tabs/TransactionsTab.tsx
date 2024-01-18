@@ -105,7 +105,7 @@ const TransactionsTab = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-full py-3 pl-12 pr-4 border rounded-[0.25rem] outline-none focus:bg-white focus:border-gray-400"
+                  className="w-full py-3 pl-12 pr-4 border rounded-[0.25rem] outline-none bg-white focus:bg-white focus:border-gray-400"
                 />
               </div>
               {/* end of search bar */}
