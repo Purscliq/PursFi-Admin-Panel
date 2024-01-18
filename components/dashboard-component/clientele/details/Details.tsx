@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 import { GoArrowLeft } from "react-icons/go";
-import { DeactivateAccountModal } from "./DeactivateAccountModal";
+import DeactivateAccountModal from "./DeactivateAccountModal";
 import { CustomTabs as Tabs } from "@/lib/AntdComponents";
 import type { TabsProps } from "antd";
 
@@ -60,6 +60,7 @@ const Details: React.FC = () => {
 
         <span>
           <p className="text-[0.875rem] text-[#40DD7F]">Activate account</p>
+          {/* <p className="text-[0.875rem] text-[#F6513B]">Deactivate account</p> */}
           <DeactivateAccountModal />
         </span>
       </div>
