@@ -66,7 +66,7 @@ const Details: React.FC = () => {
       </div>
 
       <div className="mt-10">
-        <Tabs defaultActiveKey="1" items={items} tabBarGutter={15} />;
+        <Tabs defaultActiveKey="1" items={items} tabBarGutter={15} />
       </div>
     </section>
   );
