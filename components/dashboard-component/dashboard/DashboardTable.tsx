@@ -7,6 +7,7 @@ import {
 } from "@/lib/AntdComponents";
 import FilterIcon from "@/assets/svg/FilterIcon";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
+import { HiMiniChevronUpDown } from "react-icons/hi2";
 
 interface DataType {
   name: string;
@@ -66,7 +67,12 @@ const columns: ColumnsType<DataType> = [
     width: "20%",
   },
   {
-    title: "Action",
+    title: (
+      <span className="flex items-center">
+        <p>Action</p>
+        <HiMiniChevronUpDown className="h-4 w-4 ml-4" />
+      </span>
+    ),
     sorter: true,
     dataIndex: "_id",
     render: (id) => `...`,

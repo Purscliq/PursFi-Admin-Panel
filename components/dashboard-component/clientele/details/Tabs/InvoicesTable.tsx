@@ -75,12 +75,6 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const getRandomuserParams = (params: TableParams) => ({
-  results: params.pagination?.pageSize,
-  page: params.pagination?.current,
-  ...params,
-});
-
 const InvoicesTable = () => {
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);

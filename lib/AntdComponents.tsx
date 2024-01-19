@@ -226,8 +226,6 @@ export const CustomTabs = ({ ...props }: TabsProps) => (
         Tabs: {
           itemSelectedColor: "#0AA07B",
           colorLinkActive: "#F3F8EA",
-
-          // itemActiveColor: "#0AA07B",
           itemColor: "#515B6F",
           fontSize: 16,
           fontWeightStrong: 600,

@@ -6,7 +6,7 @@ import { CustomSegment as Segmented } from "@/lib/AntdComponents";
 const Dashbord = () => {
   const date = new Date();
   return (
-    <section className="max-w-[1640px] flex flex-col p-4 space-y-6  h-screen overflow-y-scroll">
+    <section className="max-w-[1640px] flex flex-col p-4 space-y-6  md:h-screen overflow-y-scroll">
       <span>
         <h2 className="text-[25px] font-bold mb-1"> Welcome Hope</h2>
         <p className="text-[16px] text-[#7C8493]">
@@ -40,7 +40,7 @@ const Dashbord = () => {
         </span>
       </div>
       <div className="grid md:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
-        <div className="border border-gray-200 p-4 rounded-[20px] h-[438px] flex flex-col space-y-4 bg-white">
+        <div className="border border-gray-200 p-4 rounded-[20px] md:h-[438px] flex flex-col space-y-4 bg-white">
           <div className="flex  justify-between items-center p-2">
             <span>
               <p className="text-[20px] font-semibold">Account statistics</p>
@@ -54,7 +54,7 @@ const Dashbord = () => {
           </div>
           <DashboardChart />
         </div>
-        <div className="grid grid-cols-1 gap-[9px]">
+        <div className="grid grid-cols-1 gap-[9px] h-full">
           <span className="p-3 h-fit border border-gray-200 rounded-[20px] space-y-1 bg-white">
             <h1 className="text-[20px] text-[#25324B]">Revenue </h1>
             <p className="text-sm text-[#7C8493]">Total amount made</p>
@@ -87,11 +87,11 @@ const Dashbord = () => {
       <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
         <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
           <p className="text-[20px]">Admins Activities</p>
-          <button className="btn text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
+          <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
             View admins activities
           </button>
         </div>
-        <div className="flex space-x-4 items-center p-4">
+        <div className="flex space-x-4 items-center p-4 overflow-x-auto w-full overflow-hidden">
           <span className="border border-gray-300 rounded-full p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const Dashbord = () => {
               </defs>
             </svg>
           </span>
-          <div className="flex flex-col space-y-2 w-[351px]">
+          <div className="flex flex-col space-y-2 w-full md:w-[351px]">
             <div className="flex justify-between items-center">
               <span>
                 <h2 className="text-[#25324B]">Hope Tope</h2>
@@ -134,7 +134,7 @@ const Dashbord = () => {
               <span className="text-[#85BC2C]">view more</span>
             </p>
           </div>
-          <div className="flex flex-col space-y-2 w-[351px]">
+          <div className="flex flex-col space-y-2 w-full md:w-[351px]">
             <div className="flex justify-between items-center">
               <span>
                 <h2 className="text-[#25324B]">Hope Tope</h2>
@@ -154,7 +154,7 @@ const Dashbord = () => {
               Tier 2
             </p>
           </div>
-          <div className="flex flex-col space-y-2 w-[351px]">
+          <div className="flex flex-col space-y-2 w-full md:w-[351px]">
             <span>
               <h2 className="text-[#25324B]">Hope Tope</h2>
               <p className="text-[#7C88B1] text-[10px]">
