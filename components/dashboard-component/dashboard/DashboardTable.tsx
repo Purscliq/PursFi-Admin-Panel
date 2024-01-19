@@ -136,7 +136,7 @@ const DashboardTable = () => {
           </span>
         </div>
       </div>
-      <div className="relative overflow-x-auto  sm:rounded-lg w-[22rem] md:w-full">
+      <div className="relative overflow-x-auto  sm:rounded-lg w-full">
         <Table
           columns={columns}
           dataSource={data}
