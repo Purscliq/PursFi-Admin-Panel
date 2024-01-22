@@ -143,3 +143,76 @@ export const PaymentTableData = [
     amount: "NGN 70,000.00",
   },
 ];
+
+export const RefundTableData = [
+  {
+    id: 1,
+    transID: "App123456777",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 2,
+    transID: "App123456666",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 3,
+    transID: "App123446egdh",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 4,
+    transID: "App123456666",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 5,
+    transID: "App123456777",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 6,
+    transID: "App123456666",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 7,
+    transID: "App123456777",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 8,
+    transID: "App123456666",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 9,
+    transID: "App123446egdh",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+  {
+    id: 10,
+    transID: "App123446egdh",
+    title: "Trx (Bank Name)",
+    type: "Bank Transfer",
+    refundDate: "24,July 2024",
+  },
+];
