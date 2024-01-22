@@ -30,9 +30,7 @@ interface Iprops {
   email: string;
 }
 
-const Details = ({ data} : {data:Iprops | null} ) => {
-  
-
+const Details = ({ data }: { data: Iprops | null }) => {
   const items: TabsProps["items"] = [
     {
       key: "1",
