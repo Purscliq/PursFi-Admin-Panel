@@ -35,7 +35,7 @@ const Details = ({ data }: { data: Iprops | null }) => {
     {
       key: "1",
       label: "Business Details",
-      children: <BusinessDetailsTab data={data} />,
+      children: <BusinessDetailsTab  />,
     },
     {
       key: "2",
