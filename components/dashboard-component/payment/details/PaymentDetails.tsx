@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { GoArrowLeft } from "react-icons/go";
 
-interface Iprops {
-  id: number;
-  businessname: string;
-  account: string;
-  type: string;
-  email: string;
-}
-
-const Details = ({ data }: { data: Iprops | null }) => {
+const Details = () => {
   return (
     <section className="max-w-[1640px] bg-white flex flex-col p-4  h-screen overflow-y-scroll">
       <div className="md:flex justify-between border-b pb-4">
