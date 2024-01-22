@@ -29,7 +29,7 @@ const ClienteleTAble = () => {
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
-      pageSize: 5,
+      pageSize: 10,
     },
   });
   const columns: ColumnsType<DataType> = [
