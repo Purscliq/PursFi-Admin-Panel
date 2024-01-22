@@ -41,7 +41,7 @@ const Dashbord = () => {
         </span>
       </div>
       <div className="grid md:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
-        <div className="border border-gray-200 p-4 rounded-[20px] md:h-[438px] flex flex-col space-y-4 bg-white">
+        <div className="border border-gray-200 p-4 rounded-[20px]  flex flex-col space-y-4 bg-white">
           <div className="flex  justify-between items-center p-2">
             <span>
               <p className="text-[20px] font-semibold">Account statistics</p>

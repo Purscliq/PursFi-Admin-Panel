@@ -1,5 +1,4 @@
 "use client";
-
 import { Column } from "@ant-design/plots";
 
 const DashboardChart = () => {
@@ -18,7 +17,7 @@ const DashboardChart = () => {
     },
     {
       type: "thurs",
-      sales: 145,
+      sales: 95,
     },
     {
       type: "fri",
@@ -38,9 +37,7 @@ const DashboardChart = () => {
     data,
     xField: "type",
     yField: "sales",
-    style: {
-      fill: "#000",
-    },
+    color: "#000",
     columnWidthRatio: 0.8,
     xAxis: {
       label: {
@@ -57,12 +54,7 @@ const DashboardChart = () => {
       },
     },
 
-    geometryOptions: [
-      {
-        geometry: "column",
-        color: "#000", // Set your desired color here
-      },
-    ],
+ 
   };
   return <Column {...config} />;
 };

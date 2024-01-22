@@ -7,10 +7,11 @@ import {
 } from "@/lib/AntdComponents";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   //   const [alert, setAlert] = useState("");
-
+  const route  = useRouter();
   return (
     <div className="min-h-screen flex flex-col  max-w-[1640px] bg-[#FAFAFA]">
       <div className=" mx-auto w-full p-3">
@@ -59,8 +60,8 @@ const Login = () => {
               />
             </div>
             <Button
-              htmlType="submit"
               type="primary"
+              onClick={() => route.push("/dashboard")}
               className="!h-[3rem] !bg-black w-full"
             >
               Login
