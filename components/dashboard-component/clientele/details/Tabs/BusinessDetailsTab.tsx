@@ -27,8 +27,14 @@ const detailFields = [
   { label: "ID Number", key: "idNumber" },
   { label: "BVN", key: "bvn" },
 ];
-
-const BusinessDetailsTab = () => {
+interface Iprops {
+  id: number;
+  businessname: string;
+  account: string;
+  type: string;
+  email: string;
+}
+const BusinessDetailsTab = ({ data }: { data: Iprops | null }) => {
   return (
     <section>
       <div className="space-y-2 py-6 border-y">

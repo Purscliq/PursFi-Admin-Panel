@@ -1,5 +1,5 @@
 "use client";
-import {  useState } from "react";
+import { useState } from "react";
 import {
   CustomTable as Table,
   // CustomInput as Input,
@@ -12,7 +12,7 @@ import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
 
 interface DataType {
-  id: string;
+  id: number;
   businessname: string;
   account: string;
   type: string;
@@ -72,9 +72,10 @@ const ClienteleTAble = () => {
       dataIndex: "id",
       render: (_: any, _record: DataType) => (
         <Link
-          href={{ pathname: "/clientele/details", }}
+          href="/clientele-details/[id]"
+          as={`/clientele-details/${_record.id}`}
         >
-          <p className="btn text-sm rounded-none normal-case  text-black bg-[#F3F8EA] border border-black hover:border  hover:border-black hover:bg-[#F3F8EA] font-semibold">
+          <p className="btn text-sm rounded-none normal-case text-black bg-[#F3F8EA] border border-black hover:border hover:border-black hover:bg-[#F3F8EA] font-semibold">
             View Details
           </p>
         </Link>
@@ -98,7 +99,7 @@ const ClienteleTAble = () => {
           <input
             type="text"
             placeholder="Search"
-            className="w-full py-3 pl-12 pr-4 border rounded-[0.25rem] outline-none focus:!bg-white focus:border-gray-400"
+            className="w-full py-3 pl-12 pr-4 border rounded-[0.25rem] outline-none focus:!bg-transaparent focus:border-gray-400"
           />
         </div>
 

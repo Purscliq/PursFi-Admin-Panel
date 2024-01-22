@@ -13,36 +13,53 @@ import InvoicesTab from "./Tabs/InvoicesTab";
 import TransactionsTab from "./Tabs/TransactionsTab";
 import RecentActivitiesTab from "./Tabs/RecentActivitiesTab";
 import KycTab from "./Tabs/KYCTab";
+import { ClienteleTableData } from "../content";
 
-const items: TabsProps["items"] = [
-  {
-    key: "1",
-    label: "Business Details",
-    children: <BusinessDetailsTab />,
-  },
-  {
-    key: "2",
-    label: "Transactions",
-    children: <TransactionsTab />,
-  },
-  {
-    key: "3",
-    label: "Invoices",
-    children: <InvoicesTab />,
-  },
-  {
-    key: "4",
-    label: "Recent Activities",
-    children: <RecentActivitiesTab />,
-  },
-  {
-    key: "5",
-    label: "KYC",
-    children: <KycTab />,
-  },
-];
+interface Iprops {
+  id: number;
+  // businessname: string;
+  // account: string;
+  // type: string;
+  // email: string;
+}
+interface Iprops {
+  id: number;
+  businessname: string;
+  account: string;
+  type: string;
+  email: string;
+}
 
-const Details: React.FC = () => {
+const Details = ({ data} : {data:Iprops | null} ) => {
+  
+
+  const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: "Business Details",
+      children: <BusinessDetailsTab data={data} />,
+    },
+    {
+      key: "2",
+      label: "Transactions",
+      children: <TransactionsTab />,
+    },
+    {
+      key: "3",
+      label: "Invoices",
+      children: <InvoicesTab />,
+    },
+    {
+      key: "4",
+      label: "Recent Activities",
+      children: <RecentActivitiesTab />,
+    },
+    {
+      key: "5",
+      label: "KYC",
+      children: <KycTab />,
+    },
+  ];
   return (
     <section className="max-w-[1640px] bg-white flex flex-col p-4  h-screen overflow-y-scroll">
       <div className="md:flex justify-between border-b">
