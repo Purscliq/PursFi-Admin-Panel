@@ -1,6 +1,9 @@
 import React from "react";
-// import { CustomSegment as Segmented } from "@/lib/AntdComponents";
-
+import {
+  CustomSegment as Segmented,
+  CustomDatePicker as DatePicker,
+} from "@/lib/AntdComponents";
+import TransactionChart from "./TransactionChart";
 const Transaction = () => {
   const date = new Date();
   return (
@@ -41,20 +44,94 @@ const Transaction = () => {
           <p className="text-xl font-semibold text-[#25324B]">40</p>
         </span>
       </div>
-      {/* <div className="grid md:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
-        <div className="border border-gray-200 p-4 rounded-[20px] md:h-[438px] flex flex-col space-y-4 bg-white">
+      <div className="grid md:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
+        <div className="border border-gray-200 p-2 rounded-[20px] flex flex-col space-y-2 bg-white">
           <div className="flex  justify-between items-center p-2">
             <span>
-              <p className="text-[20px] font-semibold">Account statistics</p>
+              <p className="text-[20px] font-semibold">Total Transactions</p>
               <p className="text-sm text-[#7C8493]">
-                Showing Account Performance march 19-25
+                Showing Bill payment <br /> Performance may 13th-19th{" "}
               </p>
             </span>
-            <Segmented
-              options={["Week", "Month", "Year"]}
-            />
+            <DatePicker className="h-fit w-fit" placeholder="may13th-may19th" />
+
+            <Segmented options={["Week", "Month", "Year"]} />
           </div>
-          <DashboardChart />
+          <div className="flex justify-end items-end space-x-2">
+            <span className="p-4 bg-[#F6513B26]  rounded-[5px] space-y-2 h-[75px] w-[142px]">
+              <p className="text-sm text-gray-400">Failed</p>
+              <div className="flex justify-between">
+                <p className="font-semibold text-[#25324B]">40</p>
+                <p className="text-sm text-[#F6513B]">+21.01%</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                >
+                  <path
+                    d="M15 5.45325L11.4934 9.06158L8.79776 6.57107L3.50693 12.5"
+                    stroke="#F7513B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.50684 12.5H6.50684"
+                    stroke="#F7513B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.50684 12.5V9.5"
+                    stroke="#F7513B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span className="p-4 bg-[#F3F8F9]  rounded-[5px] space-y-2 h-[75px] w-[142px]">
+              <p className="text-sm text-gray-400">Sucessful</p>
+              <div className="flex justify-between">
+                <p className="font-semibold text-[#25324B]">41</p>
+                <p className="text-sm text-[#0AA07B]">+23.01%</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                >
+                  <path
+                    d="M15 5.45325L11.4934 9.06158L8.79776 6.57107L3.50693 12.5"
+                    stroke="#0AA07B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.50684 12.5H6.50684"
+                    stroke="#0AA07B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3.50684 12.5V9.5"
+                    stroke="#0AA07B"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </span>
+          </div>
+          <TransactionChart />
         </div>
         <div className="grid grid-cols-1 gap-[9px] h-full">
           <span className="p-3 h-fit border border-gray-200 rounded-[20px] space-y-1 bg-white">
@@ -86,7 +163,7 @@ const Transaction = () => {
           </span>
         </div>
       </div>
-      <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
+      {/* <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
         <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
           <p className="text-[20px]">Admins Activities</p>
           <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
