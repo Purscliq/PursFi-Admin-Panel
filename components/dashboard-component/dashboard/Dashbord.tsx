@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import DashboardChart from "./DashboardChart";
 import DashboardTable from "./DashboardTable";
