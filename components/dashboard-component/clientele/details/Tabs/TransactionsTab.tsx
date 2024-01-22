@@ -14,7 +14,15 @@ const transactions = [
 ];
 
 // transaction item
-const TransactionItem = ({ type, status, time }) => (
+const TransactionItem = ({
+  type,
+  status,
+  time,
+}: {
+  type: string;
+  status: string;
+  time: string;
+}) => (
   <div className="flex justify-between">
     <span className="flex gap-4">
       <span
@@ -64,7 +72,13 @@ const progressData = [
 ];
 
 // progress item
-const ProgressItem = ({ label, percentage }) => (
+const ProgressItem = ({
+  label,
+  percentage,
+}: {
+  label: string;
+  percentage: number;
+}) => (
   <div className="flex justify-between gap-8 text-[#7C8493]">
     <p className="text-xs">{label}</p>
     <div className="my-1 bg-[#85BC2C4D] w-3/4 rounded-full h-1.5">
