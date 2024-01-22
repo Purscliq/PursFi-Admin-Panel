@@ -1,5 +1,4 @@
 "use client";
-"--tsx";
 
 import { Column } from "@ant-design/plots";
 
