@@ -21,6 +21,7 @@ const DeactivateAccountModal: React.FC = () => {
   return (
     <>
       <button
+        type="button"
         className="btn btn-ghost hover:bg-transparent p-0"
         onClick={showModal}
       >

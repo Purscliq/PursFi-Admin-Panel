@@ -5,6 +5,8 @@ import { AiOutlineFall, AiOutlineRise } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { LuListFilter } from "react-icons/lu";
+import RefundModal from "./RefundModal";
+import TransactionSummaryModal from "./TransactionSummaryModal";
 // transactions
 const transactions = [
   { type: "success", status: "+₦5,000", time: "Today 11:32:40pm" },
@@ -100,7 +102,9 @@ const TransactionDetails = () => {
 
       <div className="space-y-2 py-6 border-y">
         <span>
-          <p className="text-[#25324B] text-[1.1875rem]">Pursbusiness Limited</p>
+          <p className="text-[#25324B] text-[1.1875rem]">
+            Pursbusiness Limited
+          </p>
           <p className="text-[#0AA07B] text-base">1234567890</p>
         </span>
       </div>
@@ -130,6 +134,13 @@ const TransactionDetails = () => {
             {transactions.map((transaction, index) => (
               <TransactionItem key={index} {...transaction} />
             ))}
+
+            {/* transaction summary modal */}
+            <TransactionSummaryModal />
+
+            {/* refund modal */}
+            <RefundModal />
+
             <div className="text-center">
               <button className="text-[#85BC2C] text-base font-normal">
                 View all Transaction history
@@ -156,6 +167,7 @@ const TransactionDetails = () => {
             {progressData.map((data, index) => (
               <ProgressItem key={index} {...data} />
             ))}
+
             <div className="text-center">
               <button className="text-[#0AA07B]">View more</button>
             </div>
