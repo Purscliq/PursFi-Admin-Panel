@@ -7,7 +7,7 @@ import {
 import { CiSearch } from "react-icons/ci";
 import { LuListFilter } from "react-icons/lu";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
-import { RefundTableData } from "../clientele/content";
+import { RefundTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
 

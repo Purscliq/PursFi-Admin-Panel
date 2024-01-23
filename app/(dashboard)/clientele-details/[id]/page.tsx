@@ -1,4 +1,4 @@
-import { ClienteleTableData } from "@/components/dashboard-component/clientele/content";
+import { ClienteleTableData } from "@/components/dashboard-component/content";
 import Details from "@/components/dashboard-component/clientele/details/Details";
 
 interface IProps {

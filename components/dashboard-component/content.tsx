@@ -216,3 +216,77 @@ export const RefundTableData = [
     refundDate: "24,July 2024",
   },
 ];
+
+export const TransactionTableData = [
+  {
+    id: 1,
+    name: "Tope Damilola",
+    service: "Cable Tv",
+    type: "DSTV",
+    status: "sucsess",
+    amount: "+5000",
+  },
+  {
+    id: 2,
+    name: "Tope Damilola",
+    refrence: "12345678",
+    service: "Cable Tv",
+    type: "DSTV",
+    status: "sucsess",
+    amount: "+5000",
+  },
+  {
+    id: 3,
+    name: "Tope Damilola",
+    refrence: "12345678",
+    service: "Cable Tv",
+    type: "DSTV",
+    status: "failed",
+    amount: "+5000",
+  },
+  {
+    id: 4,
+    name: "Tope Damilola",
+    refrence: "12345678",
+    service: "Cable Tv",
+    type: "DSTV",
+    status: "sucsess",
+    amount: "+5000",
+  },
+  {
+    id: 5,
+    name: "Tope Damilola",
+    refrence: "12345678",
+    service: "Cable Tv",
+    type: "DSTV",
+    status: "sucsess",
+    amount: "+5000",
+  },
+];
+export const TransactionClient = [
+  {
+    id: 1,
+    businessname: "PursBusiness",
+    account: "1234567890",
+  },
+  {
+    id: 2,
+    businessname: "PursBusiness",
+    account: "1234567890",
+  },
+  {
+    id: 3,
+    businessname: "PursBusiness",
+    account: "1234567890",
+  },
+  {
+    id: 4,
+    businessname: "PursBusiness",
+    account: "1234567890",},
+  {
+    id: 5,
+    businessname: "PursBusiness",
+    type: "NGO",
+    account: "1234567890",
+  },
+];

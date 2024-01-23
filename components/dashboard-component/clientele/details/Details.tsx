@@ -13,7 +13,7 @@ import InvoicesTab from "./Tabs/InvoicesTab";
 import TransactionsTab from "./Tabs/TransactionsTab";
 import RecentActivitiesTab from "./Tabs/RecentActivitiesTab";
 import KycTab from "./Tabs/KYCTab";
-import { ClienteleTableData } from "../content";
+import { ClienteleTableData } from "../../content";
 
 interface Iprops {
   id: number;
@@ -35,7 +35,7 @@ const Details = ({ data }: { data: Iprops | null }) => {
     {
       key: "1",
       label: "Business Details",
-      children: <BusinessDetailsTab  />,
+      children: <BusinessDetailsTab />,
     },
     {
       key: "2",
