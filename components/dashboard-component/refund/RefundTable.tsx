@@ -7,25 +7,24 @@ import {
 import { CiSearch } from "react-icons/ci";
 import { LuListFilter } from "react-icons/lu";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
-import { ClienteleTableData } from "./content";
+import { RefundTableData } from "../clientele/content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
 
 interface DataType {
   id: number;
-  businessname: string;
-  account: string;
+  transID: string;
+  title: string;
   type: string;
-  email: string;
+  refundDate: string;
 }
 
 export interface TableParams {
   pagination?: TablePaginationConfig;
 }
 
-const ClienteleTAble = () => {
-  const [Clienteledata, setClienteledata] =
-    useState<DataType[]>(ClienteleTableData);
+const RefundTable = () => {
+  const [Refunddata, setRefunddata] = useState<DataType[]>(RefundTableData);
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -34,12 +33,20 @@ const ClienteleTAble = () => {
   });
   const columns: ColumnsType<DataType> = [
     {
-      title: "Business Name",
+      title: "Transaction ID",
       sorter: true,
-      dataIndex: "businessname",
-      render: (businessname) => `${businessname}`,
+      dataIndex: "transID",
+      render: (transID) => `${transID}`,
       width: "20%",
     },
+    {
+      title: "Title",
+      sorter: true,
+      dataIndex: "title",
+      render: (title) => `${title}`,
+      width: "20%",
+    },
+
     {
       title: "Type",
       sorter: true,
@@ -47,19 +54,11 @@ const ClienteleTAble = () => {
       render: (type) => `${type}`,
       width: "20%",
     },
-
     {
-      title: "Account",
+      title: "Refund Date",
       sorter: true,
-      dataIndex: "account",
-      render: (account) => `${account}`,
-      width: "20%",
-    },
-    {
-      title: "email",
-      sorter: true,
-      dataIndex: "email",
-      render: (email) => `${email}`,
+      dataIndex: "refundDate",
+      render: (refundDate) => `${refundDate}`,
       width: "20%",
     },
     {
@@ -71,10 +70,7 @@ const ClienteleTAble = () => {
       ),
       dataIndex: "id",
       render: (_: any, _record: DataType) => (
-        <Link
-          href="/clientele-details/[id]"
-          as={`/clientele-details/${_record.id}`}
-        >
+        <Link href="/refund-details/[id]" as={`/refund-details/${_record.id}`}>
           <p className="btn text-sm rounded-none normal-case text-black bg-[#F3F8EA] border border-black hover:border hover:border-black hover:bg-[#F3F8EA] font-semibold">
             View Details
           </p>
@@ -88,7 +84,7 @@ const ClienteleTAble = () => {
       pagination,
     });
     if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setClienteledata([]);
+      setRefunddata([]);
     }
   };
   return (
@@ -115,11 +111,11 @@ const ClienteleTAble = () => {
         </div>
       </div>
 
-      {/* clientele table */}
-      <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-0  p-0 border border-[#D6DDEB]">
+      {/* Payment table */}
+      <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-4  p-0 border border-[#D6DDEB]">
         <Table
           columns={columns}
-          dataSource={Clienteledata}
+          dataSource={Refunddata}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
         />
@@ -128,4 +124,4 @@ const ClienteleTAble = () => {
   );
 };
 
-export default ClienteleTAble;
+export default RefundTable;

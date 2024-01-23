@@ -7,25 +7,24 @@ import {
 import { CiSearch } from "react-icons/ci";
 import { LuListFilter } from "react-icons/lu";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
-import { ClienteleTableData } from "./content";
+import { PaymentTableData } from "../clientele/content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
 
 interface DataType {
   id: number;
-  businessname: string;
+  bankname: string;
   account: string;
-  type: string;
-  email: string;
+  source: string;
+  amount: string;
 }
 
 export interface TableParams {
   pagination?: TablePaginationConfig;
 }
 
-const ClienteleTAble = () => {
-  const [Clienteledata, setClienteledata] =
-    useState<DataType[]>(ClienteleTableData);
+const PaymentTable = () => {
+  const [Paymentdata, setPaymentdata] = useState<DataType[]>(PaymentTableData);
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -34,20 +33,12 @@ const ClienteleTAble = () => {
   });
   const columns: ColumnsType<DataType> = [
     {
-      title: "Business Name",
+      title: "Bank Name",
       sorter: true,
-      dataIndex: "businessname",
-      render: (businessname) => `${businessname}`,
+      dataIndex: "bankname",
+      render: (bankname) => `${bankname}`,
       width: "20%",
     },
-    {
-      title: "Type",
-      sorter: true,
-      dataIndex: "type",
-      render: (type) => `${type}`,
-      width: "20%",
-    },
-
     {
       title: "Account",
       sorter: true,
@@ -55,11 +46,19 @@ const ClienteleTAble = () => {
       render: (account) => `${account}`,
       width: "20%",
     },
+
     {
-      title: "email",
+      title: "Source",
       sorter: true,
-      dataIndex: "email",
-      render: (email) => `${email}`,
+      dataIndex: "source",
+      render: (source) => `${source}`,
+      width: "20%",
+    },
+    {
+      title: "Amount",
+      sorter: true,
+      dataIndex: "amount",
+      render: (amount) => `${amount}`,
       width: "20%",
     },
     {
@@ -72,8 +71,8 @@ const ClienteleTAble = () => {
       dataIndex: "id",
       render: (_: any, _record: DataType) => (
         <Link
-          href="/clientele-details/[id]"
-          as={`/clientele-details/${_record.id}`}
+          href="/payment-details/[id]"
+          as={`/payment-details/${_record.id}`}
         >
           <p className="btn text-sm rounded-none normal-case text-black bg-[#F3F8EA] border border-black hover:border hover:border-black hover:bg-[#F3F8EA] font-semibold">
             View Details
@@ -88,7 +87,7 @@ const ClienteleTAble = () => {
       pagination,
     });
     if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setClienteledata([]);
+      setPaymentdata([]);
     }
   };
   return (
@@ -115,11 +114,11 @@ const ClienteleTAble = () => {
         </div>
       </div>
 
-      {/* clientele table */}
-      <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-0  p-0 border border-[#D6DDEB]">
+      {/* Payment table */}
+      <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-4  p-0 border border-[#D6DDEB]">
         <Table
           columns={columns}
-          dataSource={Clienteledata}
+          dataSource={Paymentdata}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
         />
@@ -128,4 +127,4 @@ const ClienteleTAble = () => {
   );
 };
 
-export default ClienteleTAble;
+export default PaymentTable;
