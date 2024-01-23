@@ -32,13 +32,6 @@ const DashNav = () => {
           </div>
           <div className="avatar">
             <div className="w-12 rounded-full">
-              {/* <Image
-                src={logo}
-                alt="User-pic"
-                width={100}
-                height={100}
-                objectFit="center"
-              />{" "} */}
               <Profile />
             </div>
           </div>

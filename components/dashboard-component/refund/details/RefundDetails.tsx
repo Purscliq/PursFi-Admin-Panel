@@ -18,7 +18,6 @@ const Details = () => {
       {/* details */}
       <section>
         <div className="border-y mt-4 py-8 px-4 grid md:gap-6 gap-4 md:grid-cols-3 grid-cols-2">
-          {/* Hardcoded data*/}
           <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">

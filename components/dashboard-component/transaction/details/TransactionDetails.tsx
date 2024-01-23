@@ -53,7 +53,6 @@ const TransactionItem = ({
       <span className="space-y-2">
         <p className="text-[#242F57] font-semibold">GOtv Subscription</p>
         <p className="text-[#636E95] text-sm">
-          {/* {type === "success" ? "Cable TV" : ""} */}
           Cable TV
         </p>
       </span>
