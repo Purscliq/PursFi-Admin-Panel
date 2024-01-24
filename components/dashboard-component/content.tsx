@@ -217,6 +217,79 @@ export const RefundTableData = [
   },
 ];
 
+export const PayrollTableData = [
+  {
+    id: 1,
+    payrollName: "Salary",
+    payrollID: "12004080383",
+    date: "24,July 2024",
+    amount: "NGN 70,000.00",
+  },
+  {
+    id: 2,
+    payrollName: "Salary",
+    payrollID: "12354849494",
+    date: "26,July 2024",
+    amount: "NGN 50,000.00",
+  },
+  {
+    id: 3,
+    payrollName: "Salary",
+    payrollID: "12004080383",
+    date: "27,July 2024",
+    amount: "NGN 70,000.00",
+  },
+  {
+    id: 4,
+    payrollName: "Salary",
+    payrollID: "12354849494",
+    date: "24,July 2024",
+    amount: "NGN 50,000.00",
+  },
+  {
+    id: 5,
+    payrollName: "Salary",
+    payrollID: "12004080383",
+    date: "26,July 2024",
+    amount: "NGN 70,000.00",
+  },
+  {
+    id: 6,
+    payrollName: "Salary",
+    payrollID: "12354849494",
+    date: "27,July 2024",
+    amount: "NGN 50,000.00",
+  },
+  {
+    id: 7,
+    payrollName: "Salary",
+    payrollID: "12004080383",
+    date: "24,July 2024",
+    amount: "NGN 70,000.00",
+  },
+  {
+    id: 8,
+    payrollName: "Salary",
+    payrollID: "12354849494",
+    date: "26,July 2024",
+    amount: "NGN 50,000.00",
+  },
+  {
+    id: 9,
+    payrollName: "Salary",
+    payrollID: "12004080383",
+    date: "27,July 2024",
+    amount: "NGN 70,000.00",
+  },
+  {
+    id: 10,
+    payrollName: "Salary",
+    payrollID: "12354849494",
+    date: "24,July 2024",
+    amount: "NGN 50,000.00",
+  },
+];
+
 export const TransactionTableData = [
   {
     id: 1,
@@ -282,7 +355,8 @@ export const TransactionClient = [
   {
     id: 4,
     businessname: "PursBusiness",
-    account: "1234567890",},
+    account: "1234567890",
+  },
   {
     id: 5,
     businessname: "PursBusiness",
