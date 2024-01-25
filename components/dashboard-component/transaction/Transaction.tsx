@@ -78,7 +78,7 @@ const Transaction = () => {
           <p className="text-xl font-semibold text-[#25324B]">40</p>
         </span>
       </div>
-      <div className="grid md:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
+      <div className="grid lg:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
         <div className="border border-gray-200 p-2 rounded-[20px] flex flex-col space-y-2 bg-white">
           <div className="flex  justify-between items-center p-2">
             <span>
@@ -174,7 +174,7 @@ const Transaction = () => {
           <p className="text-[#000] p-2 text-center font-semibold">View more</p>
         </div>
       </div>
-      <div className="grid md:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-[484px] p-3">
+      <div className="grid lg:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-[484px] p-3">
         <TransactionTable />
         <TopClient />
       </div>

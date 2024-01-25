@@ -2,12 +2,11 @@
 import { useState } from "react";
 import {
   CustomTable as Table,
-  // CustomInput as Input,
 } from "@/lib/AntdComponents";
 import { CiSearch } from "react-icons/ci";
 import { LuListFilter } from "react-icons/lu";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
-import { ClienteleTableData, TransactionTableData } from "../content";
+import {  TransactionTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
 
@@ -43,7 +42,6 @@ const TransactionTable = () => {
           <p>ID:123456</p>
         </span>
       ),
-      width: "30%",
     },
     {
       title: "Service",
@@ -55,7 +53,6 @@ const TransactionTable = () => {
           <p>(DSTV)</p>
         </span>
       ),
-      width: "20%",
     },
     {
       title: "Status",
@@ -63,22 +60,20 @@ const TransactionTable = () => {
       dataIndex: "status",
       render: (type) =>
         type === "failed" ? (
-          <span className="p-[5%] rounded-[80px] bg-[#FF39561A]/[10%] text-[#FF3956] text-center text-[14px] font-[700]">
+          <span className="p-[4%] w-full rounded-[80px] bg-[#FF39561A]/[10%] text-[#FF3956] text-center text-[14px] font-[700]">
             {type}
           </span>
         ) : (
-          <span className="p-[5%] rounded-[80px] bg-[#0AA07B]/[10%] text-[#0AA07B] text-center text-[14px] font-[700]">
+          <span className="p-[4%] w-full rounded-[80px] bg-[#0AA07B]/[10%] text-[#0AA07B] text-center text-[14px] font-[700]">
             {type}
           </span>
         ),
-      width: "20%",
     },
     {
       title: "Amount",
       sorter: true,
       dataIndex: "amount",
       render: (amount) => `${amount}`,
-      width: "20%",
     },
     {
       title: (
