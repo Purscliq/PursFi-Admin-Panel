@@ -9,7 +9,6 @@ import type { TabsProps } from "antd";
 
 // tab components
 import BusinessDetailsTab from "./Tabs/BusinessDetailsTab";
-import InvoicesTab from "./Tabs/InvoicesTab";
 import TransactionsTab from "./Tabs/TransactionsTab";
 import RecentActivitiesTab from "./Tabs/RecentActivitiesTab";
 import KycTab from "./Tabs/KYCTab";
@@ -44,16 +43,11 @@ const Details = ({ data }: { data: Iprops | null }) => {
     },
     {
       key: "3",
-      label: "Invoices",
-      children: <InvoicesTab />,
-    },
-    {
-      key: "4",
       label: "Recent Activities",
       children: <RecentActivitiesTab />,
     },
     {
-      key: "5",
+      key: "4",
       label: "KYC",
       children: <KycTab />,
     },
