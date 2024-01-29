@@ -400,3 +400,76 @@ export const ChargeData = [
     amount: "NGN 70,000.00 ",
   },
 ];
+
+export const AdminTableData = [
+  {
+    id: 1,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 2,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 3,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 4,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 5,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 6,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 7,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 8,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 9,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+  {
+    id: 10,
+    fullName: "Tope Hope",
+    roles: "Operation Manager",
+    lastActive: "24,July 2024",
+    status: "Active",
+  },
+];
