@@ -360,7 +360,43 @@ export const TransactionClient = [
   {
     id: 5,
     businessname: "PursBusiness",
-    type: "NGO",
     account: "1234567890",
+  },
+];
+export const ChargeData = [
+  {
+    id: 1,
+    name: "VTU/VTPASS",
+    type: "Bill Payment",
+    vat: "0.5%",
+    amount: "NGN 70,000.00 ",
+  },
+  {
+    id: 2,
+    name: "VTU/VTPASS",
+    type: "Bill Payment",
+    vat: "0.5%",
+    amount: "NGN 70,000.00 ",
+  },
+  {
+    id: 3,
+    name: "VTU/VTPASS",
+    type: "Bill Payment",
+    vat: "0.5%",
+    amount: "NGN 70,000.00 ",
+  },
+  {
+    id: 4,
+    name: "VTU/VTPASS",
+    type: "Bill Payment",
+    vat: "0.5%",
+    amount: "NGN 70,000.00 ",
+  },
+  {
+    id: 5,
+    name: "VTU/VTPASS",
+    type: "Bill Payment",
+    vat: "0.5%",
+    amount: "NGN 70,000.00 ",
   },
 ];

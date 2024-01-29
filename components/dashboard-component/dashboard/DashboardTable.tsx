@@ -27,21 +27,18 @@ const columns: ColumnsType<DataType> = [
     sorter: true,
     dataIndex: "date",
     render: (date) => `${date}`,
-    width: "20%",
   },
   {
     title: "Full Name",
     sorter: true,
     dataIndex: "name",
     render: (name) => `${name}`,
-    width: "20%",
   },
   {
     title: "Purpose",
     sorter: true,
     dataIndex: "purpose",
     render: (purpose) => `${purpose}`,
-    width: "20%",
   },
   {
     title: "type",
@@ -49,22 +46,20 @@ const columns: ColumnsType<DataType> = [
     dataIndex: "type",
     render: (type) =>
       type === "Credit" ? (
-        <span className="p-[4%] rounded-[80px] bg-[#FF39561A]/[10%] text-[#FF3956] text-center text-[14px] font-[600]">
+        <span className="p-[4%] w-full rounded-[80px] bg-[#FF39561A]/[10%] text-[#FF3956] text-center text-[14px] font-[600]">
           {type}
         </span>
       ) : (
-        <span className="p-[4%] rounded-[80px] bg-[#0AA07B]/[10%] text-[#0AA07B] text-center text-[14px] font-[600]">
+        <span className="p-[4%] w-full rounded-[80px] bg-[#0AA07B]/[10%] text-[#0AA07B] text-center text-[14px] font-[600]">
           {type}
         </span>
       ),
-    width: "20%",
   },
   {
     title: "Amount",
     sorter: true,
     dataIndex: "amount",
     render: (amount) => `${amount}`,
-    width: "20%",
   },
   {
     title: (
@@ -76,7 +71,6 @@ const columns: ColumnsType<DataType> = [
     sorter: true,
     dataIndex: "_id",
     render: (id) => `...`,
-    width: "20%",
   },
 ];
 

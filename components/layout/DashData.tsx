@@ -28,11 +28,11 @@ export const sidebarData1: MenuProps["items"] = [
     key: "transaction",
   },
 
-  {
-    label: <Link href="/invoice">Invoices</Link>,
-    icon: <TransIcon className=" font-bold text-[#7C8493]" />,
-    key: "invoice",
-  },
+  // {
+  //   label: <Link href="/invoice">Invoices</Link>,
+  //   icon: <TransIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "invoice",
+  // },
 ];
 export const sidebarData2: MenuProps["items"] = [
   {
@@ -52,11 +52,11 @@ export const sidebarData2: MenuProps["items"] = [
     key: "payroll",
   },
 
-  {
-    label: <Link href="/staff">Staff</Link>,
-    icon: <PayrollIcon className=" font-bold text-[#7C8493]" />,
-    key: "staff",
-  },
+  // {
+  //   label: <Link href="/staff">Staff</Link>,
+  //   icon: <PayrollIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "staff",
+  // },
 
   {
     label: <Link href="/payment">Payment</Link>,
@@ -70,54 +70,59 @@ export const sidebarData3: MenuProps["items"] = [
     icon: <RefundIcon className=" font-bold text-[#7C8493]" />,
     key: "refund",
   },
-  {
-    label: <Link href="/dispute">Dispute</Link>,
-    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-    key: "dispute",
-  },
+  // {
+  //   label: <Link href="/dispute">Dispute</Link>,
+  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "dispute",
+  // },
   {
     label: <Link href="/charge">Charge</Link>,
     icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
     key: "charge",
   },
-  {
-    label: <Link href="/event">Event & Ads</Link>,
-    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-    key: "event",
-  },
-  {
-    label: <Link href="/statement">Statement</Link>,
-    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-    key: "statement",
-  },
-
-  {
-    label: <Link href="/banking">Banking</Link>,
-    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-    key: "banking",
-  },
-  {
-    label: <Link href="/apps">Apps</Link>,
-    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-    key: "apps",
-  },
-];
-export const sidebarData4: MenuProps["items"] = [
+  // {
+  //   label: <Link href="/event">Event & Ads</Link>,
+  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "event",
+  // },
+  // {
+  //   label: <Link href="/statement">Statement</Link>,
+  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "statement",
+  // },
   {
     label: <Link href="/setting">Settings</Link>,
     icon: <RefundIcon className=" font-bold text-[#7C8493]" />,
     key: "setting",
   },
   {
-    label: <Link href="/api">Api and Settings</Link>,
-    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-    key: "api",
-  },
-  {
     label: <Link href="/help-center"> Help Center</Link>,
     icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
     key: "help-center",
   },
+  // {
+  //   label: <Link href="/banking">Banking</Link>,
+  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "banking",
+  // },
+  // {
+  //   label: <Link href="/apps">Apps</Link>,
+  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "apps",
+  // },
+];
+export const sidebarData4: MenuProps["items"] = [
+  // {
+  //   label: <Link href="/setting">Settings</Link>,
+  //   icon: <RefundIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "setting",
+  // },
+  // {
+  //   label: <Link href="/api">Api and Settings</Link>,
+  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+  //   key: "api",
+  // },
+ 
 ];
 export const activeKeys = [
   "dashboard",

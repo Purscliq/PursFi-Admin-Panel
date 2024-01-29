@@ -1,6 +1,7 @@
+"use client";
 import { Progress } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineFall, AiOutlineRise } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
@@ -27,48 +28,6 @@ const progressData = [
   { label: "Salary", percentage: 25 },
   { label: "Cable TV", percentage: 20 },
 ];
-// transaction item
-const TransactionItem = ({
-  type,
-  status,
-  time,
-}: {
-  type: string;
-  status: string;
-  time: string;
-}) => (
-  <div className="flex justify-between">
-    <span className="flex gap-4">
-      <span
-        className={`bg-[#EDEFF2] rounded-full p-4 ${
-          type === "success" ? "text-[#2AC769]" : "text-[#ED342B]"
-        }`}
-      >
-        {type === "success" ? (
-          <AiOutlineRise className="h-5 w-5" />
-        ) : (
-          <AiOutlineFall className="h-5 w-5" />
-        )}
-      </span>
-      <span className="space-y-2">
-        <p className="text-[#242F57] font-semibold">GOtv Subscription</p>
-        <p className="text-[#636E95] text-sm">
-          Cable TV
-        </p>
-      </span>
-    </span>
-    <span className="text-right">
-      <p
-        className={`font-semibold ${
-          type === "success" ? "text-[#2AC769]" : "text-[#ED342B]"
-        }`}
-      >
-        {status}
-      </p>
-      <p className="text-[#636E95]">{time}</p>
-    </span>
-  </div>
-);
 
 const ProgressItem = ({
   label,
@@ -88,6 +47,50 @@ const ProgressItem = ({
   </div>
 );
 const TransactionDetails = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // transaction item
+  const TransactionItem = ({
+    type,
+    status,
+    time,
+  }: {
+    type: string;
+    status: string;
+    time: string;
+  }) => (
+    <div
+      className="flex justify-between cursor-pointer"
+      onClick={() => setIsModalOpen(true)}
+    >
+      <span className="flex gap-4">
+        <span
+          className={`bg-[#EDEFF2] rounded-full p-4 ${
+            type === "success" ? "text-[#2AC769]" : "text-[#ED342B]"
+          }`}
+        >
+          {type === "success" ? (
+            <AiOutlineRise className="h-5 w-5" />
+          ) : (
+            <AiOutlineFall className="h-5 w-5" />
+          )}
+        </span>
+        <span className="space-y-2">
+          <p className="text-[#242F57] font-semibold">GOtv Subscription</p>
+          <p className="text-[#636E95] text-sm">Cable TV</p>
+        </span>
+      </span>
+      <span className="text-right">
+        <p
+          className={`font-semibold ${
+            type === "success" ? "text-[#2AC769]" : "text-[#ED342B]"
+          }`}
+        >
+          {status}
+        </p>
+        <p className="text-[#636E95]">{time}</p>
+      </span>
+    </div>
+  );
   return (
     <section className="max-w-[1640px] flex flex-col bg-white p-4 space-y-4 md:h-screen overflow-y-scroll">
       <span className="flex gap-2 border-b border-b-gray-100">
@@ -135,9 +138,10 @@ const TransactionDetails = () => {
             ))}
 
             {/* transaction summary modal */}
-            <TransactionSummaryModal />
-
-            {/* refund modal */}
+            <TransactionSummaryModal
+              open={isModalOpen}
+              onclose={() => setIsModalOpen(false)}
+            />
             <RefundModal />
 
             <div className="text-center">
