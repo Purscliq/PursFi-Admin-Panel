@@ -2,17 +2,14 @@
 import { CustomModal, CustomInput as Input } from "@/lib/AntdComponents";
 interface ChargeModalProps {
   isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
+  onclose: () => void;
 }
 
-const ChargeModal: React.FC<ChargeModalProps> = ({
-  isModalOpen,
-  setIsModalOpen,
-}) => {
+const ChargeModal: React.FC<ChargeModalProps> = ({ isModalOpen, onclose }) => {
   return (
     <CustomModal
       open={isModalOpen}
-      onCancel={() => setIsModalOpen(false)}
+      onCancel={onclose}
       footer={null}
       centered={true}
     >
@@ -66,9 +63,9 @@ const ChargeModal: React.FC<ChargeModalProps> = ({
           />
         </div>
       </div>
-        <button className="w-full mt-5 bg-black py-[0.870rem] px-[1.6865rem] rounded-[0.3125rem] text-white font-semibold text-lg">
-          Update
-        </button>
+      <button className="w-full mt-5 bg-black py-[0.870rem] px-[1.6865rem] rounded-[0.3125rem] text-white font-semibold text-lg">
+        Update
+      </button>
     </CustomModal>
   );
 };

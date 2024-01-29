@@ -6,6 +6,7 @@ import { LuListFilter } from "react-icons/lu";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import { ChargeData } from "../content";
+import ChargeModal from "./ChargeModal";
 
 interface DataType {
   id: number;
@@ -27,6 +28,8 @@ const ChargeTable = () => {
       pageSize: 10,
     },
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const columns: ColumnsType<DataType> = [
     {
       title: "Vendor Name",
@@ -61,7 +64,14 @@ const ChargeTable = () => {
         </span>
       ),
       dataIndex: "id",
-      render: (id) => `...`,    },
+      render: (id: any, record: DataType) => {
+        return (
+          <span onClick={() => setIsModalOpen(true)} className="cursor-pointer">
+            ...
+          </span>
+        );
+      },
+    },
   ];
 
   const handleTableChange = (pagination: TablePaginationConfig) => {
@@ -105,6 +115,10 @@ const ChargeTable = () => {
           onChange={handleTableChange}
         />
       </div>
+      <ChargeModal
+        isModalOpen={isModalOpen}
+        onclose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

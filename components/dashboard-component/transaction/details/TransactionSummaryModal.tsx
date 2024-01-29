@@ -2,39 +2,18 @@
 
 import React, { useState } from "react";
 import { CustomModal } from "@/lib/AntdComponents";
+interface TransactionModalProps {
+  open: boolean;
+  onclose: () => void;
+}
 
-const TransactionSummaryModal: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
+const TransactionSummaryModal: React.FC<TransactionModalProps> = ({
+  open,
+  onclose,
+}) => {
   return (
     <>
-      <div className="">
-        <button
-          onClick={showModal}
-          className="text-[#85BC2C] text-base font-normal"
-        >
-          Transaction Summary Modal Toggle
-        </button>
-      </div>
-
-      <CustomModal
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-      >
+      <CustomModal open={open} onCancel={onclose} footer={null} centered={true}>
         <div className="border-b pb-1 mt-8 flex justify-between text-[#84818A] text-base">
           <h1 className="font-bold text-[#242F57] text-[1.5625rem]  py-1">
             Transfer
