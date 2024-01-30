@@ -12,7 +12,6 @@ import BusinessDetailsTab from "./Tabs/BusinessDetailsTab";
 import TransactionsTab from "./Tabs/TransactionsTab";
 import RecentActivitiesTab from "./Tabs/RecentActivitiesTab";
 import KycTab from "./Tabs/KYCTab";
-import { ClienteleTableData } from "../../content";
 
 interface Iprops {
   id: number;

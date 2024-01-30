@@ -41,7 +41,7 @@ const ProgressItem = ({
 const Transaction = () => {
   const date = new Date();
   return (
-    <section className="max-w-[1640px] flex flex-col bg-white p-4 space-y-6  md:h-screen overflow-y-scroll">
+    <section className="max-w-[1640px] flex flex-col bg-[#FAFAFA] p-4 space-y-6  md:h-screen overflow-y-scroll">
       <span>
         <h2 className="text-[25px] font-bold mb-1"> Transaction</h2>
         <p className="text-[16px] text-[#7C8493]">
@@ -167,7 +167,7 @@ const Transaction = () => {
           </div>
           <TransactionChart />
         </div>
-        <div className="grid grid-cols-1 gap-[8px] h-full border border-gray-200 rounded-[20px] p-3">
+        <div className="grid grid-cols-1 gap-[8px] h-full bg-white border border-gray-200 rounded-[20px] p-3">
           {progressData.map((data, index) => (
             <ProgressItem key={index} {...data} />
           ))}
