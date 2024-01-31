@@ -12,8 +12,8 @@ const AdminActivitics = () => {
           <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
             <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
               <p className="text-[20px]">Admins Activities</p>
-              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
-                View admins activities
+              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#8F9197]  border border-gray-200">
+                View activities
               </button>
             </div>
             <div className="w-full overflow-hidden overflow-x-auto">
@@ -69,8 +69,8 @@ const AdminActivitics = () => {
           <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
             <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
               <p className="text-[20px]">Admins Activities</p>
-              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
-                View admins activities
+              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#8F9197]  border border-gray-200">
+                View activities
               </button>
             </div>
             <div className="w-full overflow-hidden overflow-x-auto">
@@ -126,8 +126,8 @@ const AdminActivitics = () => {
           <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
             <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
               <p className="text-[20px]">Admins Activities</p>
-              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
-                View admins activities
+              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#8F9197]  border border-gray-200">
+                View activities
               </button>
             </div>
             <div className="w-full overflow-hidden overflow-x-auto">
@@ -183,8 +183,8 @@ const AdminActivitics = () => {
           <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
             <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
               <p className="text-[20px]">Admins Activities</p>
-              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">
-                View admins activities
+              <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#8F9197]  border border-gray-200">
+                View activities
               </button>
             </div>
             <div className="w-full overflow-hidden overflow-x-auto">
