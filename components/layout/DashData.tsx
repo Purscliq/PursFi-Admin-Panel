@@ -1,4 +1,3 @@
-
 import { MenuProps } from "antd";
 import Link from "next/link";
 import DashIcon from "@/assets/svg/DashIcon";
@@ -41,9 +40,9 @@ export const sidebarData2: MenuProps["items"] = [
     key: "admin",
   },
   {
-    label: <Link href="/roles-permission">Roles & Permissions</Link>,
+    label: <Link href="/roles-and-permissions">Roles & Permissions</Link>,
     icon: <RolesIcon className=" font-bold text-[#7C8493]" />,
-    key: "roles-permission",
+    key: "roles-and-permissions",
   },
 
   {
@@ -122,7 +121,6 @@ export const sidebarData4: MenuProps["items"] = [
   //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
   //   key: "api",
   // },
- 
 ];
 export const activeKeys = [
   "dashboard",
@@ -144,5 +142,5 @@ export const activeKeys = [
   "roles-permission",
   "staff",
   "admin",
-  "transaction"
+  "transaction",
 ];
