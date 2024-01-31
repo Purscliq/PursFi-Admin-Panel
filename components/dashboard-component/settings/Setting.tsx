@@ -18,9 +18,9 @@ const Setting = () => {
     },
   ];
   return (
-    <section className="max-w-[1640px] flex flex-col bg-[#FAFAFA] px-6 py-4 space-y-6  md:h-screen overflow-y-scroll">
+    <section className="max-w-[1640px] flex flex-col bg-[#FAFAFA] px-6 py-4 space-y-3  md:h-screen overflow-y-scroll">
       <h2 className="text-[25px] font-bold mb-1">Setting</h2>
-      <div className=" bg-white p-5">
+      <div className=" bg-white p-3">
         <Tabs defaultActiveKey="1" items={items} tabBarGutter={15} />
       </div>
     </section>
