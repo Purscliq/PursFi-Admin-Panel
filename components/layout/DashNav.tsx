@@ -26,7 +26,7 @@ const DashNav = () => {
           />
         </div>
         <div className="space-x-8 items-center flex">
-          <div className="hidden lg:flex space-x-3  px-2 items-center border border-gray-700 rounded-full">
+          <div className="hidden lg:flex space-x-3 py-2  px-4 items-center border border-gray-700 rounded-full">
             <span className="w-2 h-2 rounded-full bg-green-700"></span>
             <span>Notifications</span>
           </div>
