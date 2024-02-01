@@ -216,7 +216,7 @@ export const CustomMenu = ({ ...props }: MenuProps) => (
 );
 const secConfig = {
   fontFamily: archivo.style.fontFamily,
-  colorPrimary: "#5B8A52",
+  colorPrimary: "#0000",
 };
 export const CustomTabs = ({ ...props }: TabsProps) => (
   <ConfigProvider
@@ -224,8 +224,8 @@ export const CustomTabs = ({ ...props }: TabsProps) => (
       token: { ...secConfig },
       components: {
         Tabs: {
-          itemSelectedColor: "#0AA07B",
-          colorLinkActive: "#F3F8EA",
+          itemSelectedColor: "#000000",
+          colorLinkActive: "#000000", 
           itemColor: "#515B6F",
           fontSize: 16,
           fontWeightStrong: 600,
@@ -236,6 +236,7 @@ export const CustomTabs = ({ ...props }: TabsProps) => (
     <Tabs {...props} />
   </ConfigProvider>
 );
+
 export const CustomSegment = (
   { ...props }: SegmentedProps,
   ref: React.Ref<HTMLDivElement>
