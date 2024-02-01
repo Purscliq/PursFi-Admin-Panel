@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Avatar from "../../../../assets/png/People.png";
+import Link from "next/link";
 
 const ticketData = [
   {
+    id: 1,
     statusColor: "[#F8A53499]",
     statusText: "New Ticket",
     ticketNumber: "Ticket# 2023-CS123",
@@ -14,6 +16,7 @@ const ticketData = [
     author: "John Snow",
   },
   {
+    id: 2,
     statusColor: "green-400",
     statusText: "Ongoing Ticket",
     ticketNumber: "Ticket# 2023-CS124",
@@ -24,6 +27,7 @@ const ticketData = [
     author: "Jane Doe",
   },
   {
+    id: 3,
     statusColor: "blue-400",
     statusText: "Ongoing Ticket",
     ticketNumber: "Ticket# 2023-CS124",
@@ -34,6 +38,7 @@ const ticketData = [
     author: "Jane Doe",
   },
   {
+    id: 4,
     statusColor: "[#F8A53499]",
     statusText: "Ongoing Ticket",
     ticketNumber: "Ticket# 2023-CS124",
@@ -44,6 +49,7 @@ const ticketData = [
     author: "Jane Doe",
   },
   {
+    id: 5,
     statusColor: "[#F8A53499]",
     statusText: "Ongoing Ticket",
     ticketNumber: "Ticket# 2023-CS124",
@@ -89,9 +95,13 @@ const AllTicketsTab = () => {
                 />
                 <p>{ticket.author}</p>
               </span>
-              <button className="text-base hover:text-black bg-white text-[#0D24F1]">
+              <Link
+                href="/ticket-details/[id]"
+                as={`/ticket-details/${ticket.id}`}
+                className="text-base hover:text-black bg-white text-[#0D24F1]"
+              >
                 Open Ticket
-              </button>
+              </Link>
             </div>
           </div>
         ))}
