@@ -126,7 +126,7 @@ const RolesAndPermissionsTable = () => {
           </div>
 
           <div className="flex gap-4 mt-4 md:mt-0">
-            <button className="p-4 md:py-0 text-sm rounded-[0.25rem] border border-[#D6DDEB]">
+            <button className="p-4 text-sm rounded-[0.25rem] border border-[#D6DDEB]">
               <LuListFilter className="w-4 h-4 inline" /> {"  "}
               Filter
             </button>
