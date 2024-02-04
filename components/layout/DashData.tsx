@@ -79,6 +79,11 @@ export const sidebarData3: MenuProps["items"] = [
     icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
     key: "charge",
   },
+  {
+    label: <Link href="/bulk-email"> Bulk Email</Link>,
+    icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
+    key: "bulk-email",
+  },
   // {
   //   label: <Link href="/event">Event & Ads</Link>,
   //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
@@ -94,11 +99,7 @@ export const sidebarData3: MenuProps["items"] = [
     icon: <RefundIcon className=" font-bold text-[#7C8493]" />,
     key: "setting",
   },
-  // {
-  //   label: <Link href="/help-center"> Help Center</Link>,
-  //   icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
-  //   key: "help-center",
-  // },
+
   {
     label: <Link href="/help-center"> API and Settings</Link>,
     icon: <DisputeIcon className=" font-bold text-[#7C8493]" />,
