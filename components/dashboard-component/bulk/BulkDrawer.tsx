@@ -34,7 +34,7 @@ const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
         open={open}
         getContainer={false}
         closable={false}
-        style={{ position: "absolute", backgroundColor: "#f7f7f7" }}
+        style={{ position: "absolute" }}
       >
         <h1 className="text-3xl font-bold mb-3">Bulk Email</h1>
         <div className="p-2 bg-white shadow-sm lg:flex justify-between items-center space-y-2 lg:space-y-0">
@@ -117,7 +117,7 @@ const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
                 <p className="font-semibold">
                   &lt; michelle.rivera@example.com &gt;{" "}
                 </p>
-                <p className="underline">Unsubscribe</p>
+                <p className="underline hover:no-underline">Unsubscribe</p>
               </span>
               <span className="flex gap-1">
                 to <p className="font-semibold">me, Sidney, Sharon</p>{" "}
