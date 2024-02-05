@@ -16,15 +16,20 @@ import SnoozeIcon from "@/assets/svg/email-icons/SnoozeIcon";
 import SpamIcon from "@/assets/svg/email-icons/SpamIcon";
 import StarIcon from "@/assets/svg/email-icons/StarIcon";
 import UnreadIcon from "@/assets/svg/email-icons/UnreadIcon";
-import { Drawer, Avatar } from "antd";
+import { Avatar, Drawer } from "antd";
+import { useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { IoIosArrowBack } from "react-icons/io";
+import OpenFeild from "./OpenFeild";
+import { UserOutlined } from "@ant-design/icons";
 
 interface TransactionModalProps {
   open: boolean;
   cancel: () => void;
 }
 const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
+  const [openFeild, setOpenField] = useState(false)
+
   return (
     <div>
       <Drawer
@@ -107,7 +112,7 @@ const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
         <div className="p-2 mt-4 bg-white shadow-sm lg:flex justify-between items-center space-y-2 lg:space-y-0">
           <div className="flex gap-4">
             {/* Avatar */}
-            <div className="bg-gray-300 rounded-full h-10 w-10 my-1" />
+            <Avatar icon={<UserOutlined />} />
             {/* end of avatar */}
             <div className="text-[#0000008A] text-sm">
               <span className="md:flex gap-2 space-y-1 lg:space-y-0">
@@ -142,7 +147,7 @@ const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
         </div>
 
         {/* body */}
-        <div className="lg:px-16 px-8 py-3 mt-4 h-[500px] bg-white shadow-sm">
+        <div className="relative lg:px-16 px-8 py-3 mt-4 h-[500px] bg-white shadow-sm">
           <p className="text-md text-black font-semibold">
             Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt
             qui esse pariatur duis deserunt mollit dolore cillum minim tempor
@@ -169,10 +174,12 @@ const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
               Thanks for the update!
             </button>
           </div>
-          {/* reply, and forward */}
+        
           <div className="flex gap-4 mt-6 pt-6 border-t">
             <button
               type="button"
+              onClick={() => setOpenField(!openFeild)}
+
               className="text-base flex gap-2 text-[#0000008A] font-semibold border border-[#00000029] rounded-md px-4 py-1"
             >
               <span className="py-1">
@@ -199,6 +206,8 @@ const BulkDrawer: React.FC<TransactionModalProps> = ({ open, cancel }) => {
               Forward
             </button>
           </div>
+            {/* reply, and forward */}
+            {openFeild && <OpenFeild cancel={()=>setOpenField(false)}/>}{" "}
         </div>
       </Drawer>
     </div>
