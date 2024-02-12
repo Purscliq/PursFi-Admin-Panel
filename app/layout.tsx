@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
-import AntdConfig from "@/lib/AntdConfig";
+import StoreProvider from "@/store/StoreProvider";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const archivo = Archivo({ subsets: ["latin"] });
 
@@ -18,9 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light">
       <body className={`${archivo.className} !bg-[#FAFAFA]`}>
-        <AntdConfig>
-         {children}
-        </AntdConfig>
+        <AntdRegistry>
+          <StoreProvider>{children}</StoreProvider>
+        </AntdRegistry>
       </body>
     </html>
   );
