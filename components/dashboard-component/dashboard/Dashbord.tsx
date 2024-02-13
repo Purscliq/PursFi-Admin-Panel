@@ -53,7 +53,7 @@ const Dashbord = () => {
           </div>
           <DashboardChart />
         </div>
-        <div className="grid grid-cols-1 gap-[9px] h-full">
+        <div className="grid grid-cols-1 gap-[9px]">
           <span className="p-3 h-fit border border-gray-200 rounded-[20px] space-y-1 bg-white">
             <h1 className="text-[20px] text-[#25324B]">Revenue </h1>
             <p className="text-sm text-[#7C8493]">Total amount made</p>
@@ -83,7 +83,7 @@ const Dashbord = () => {
           </span>
         </div>
       </div>
-      <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white">
+      <div className="w-full border border-gray-200 rounded-[20px] space-y-4 bg-white h-full">
         <div className="border-b border-b-gray-200 p-4 flex justify-between items-center">
           <p className="text-[20px]">Admins Activities</p>
           <button className="btn btn-sm text-sm rounded-none normal-case bg-transparent hover:bg-transparent text-[#85BC2C]  border border-gray-200">

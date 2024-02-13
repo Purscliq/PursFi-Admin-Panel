@@ -7,7 +7,7 @@ const authSlice = ApiSlice.enhanceEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (body) => ({
-        url: "login",
+        url: "/api/v1/login",
         method: "POST",
         body,
       }),
