@@ -1,5 +1,4 @@
 import { ApiSlice } from "./Api";
-import { updateUser, logOut } from "@/store/userSlice";
 
 const authSlice = ApiSlice.enhanceEndpoints({
   addTagTypes: ["profile" as const, "business" as const],
@@ -27,46 +26,40 @@ const authSlice = ApiSlice.enhanceEndpoints({
         body,
       }),
     }),
-    register: builder.mutation({
-      query: (body) => ({
-        url: "register/user",
-        method: "POST",
-        body,
-      }),
-      onQueryStarted(id, { dispatch, queryFulfilled }) {
-        queryFulfilled
-          .then((apiResponse) => {
-            localStorage.setItem(
-              "refresh",
-              apiResponse?.data?.token?.refreshToken
-            );
-            localStorage.setItem("token", apiResponse.data?.token?.token);
-          })
-          .catch(() => {});
-      },
-    }),
-    profile: builder.query({
+    getBusiness: builder.query({
       query: () => ({
-        url: "user/me",
+        url: "/api/v1/business",
+        method: "GET",
       }),
-      providesTags: ["profile"],
-      onQueryStarted(id, { dispatch, queryFulfilled }) {
-        queryFulfilled
-          .then((apiResponse) => {
-            dispatch(updateUser(apiResponse?.data?.user));
-          })
-          .catch(() => {
-            dispatch(logOut());
-          });
-      },
     }),
+    getWallet: builder.query({
+      query: () => ({
+        url: "/api/v1/Wallet/balance",
+        method: "GET",
+      }),
+    }),
+ 
+    // profile: builder.query({
+    //   query: () => ({
+    //     url: "user/me",
+    //   }),
+    //   providesTags: ["profile"],
+    //   onQueryStarted(id, { dispatch, queryFulfilled }) {
+    //     queryFulfilled
+    //       .then((apiResponse) => {
+    //         dispatch(updateUser(apiResponse?.data?.user));
+    //       })
+    //       .catch(() => {
+    //         dispatch(logOut());
+    //       });
+    //   },
+    // }),
   }),
 });
 
 export const {
   useLoginMutation,
-  useRegisterMutation,
-  useProfileQuery,
-  useLazyProfileQuery,
   useRefreshMutation,
+  useGetBusinessQuery,
+  useGetWalletQuery
 } = authSlice;

@@ -3,11 +3,15 @@ import React from "react";
 import DashboardChart from "./DashboardChart";
 import DashboardTable from "./DashboardTable";
 import { CustomSegment as Segmented } from "@/lib/AntdComponents";
+import { useGetBusinessQuery, useGetWalletQuery } from "@/services/authService";
 
 const Dashbord = () => {
   const date = new Date();
+  const { data: business } = useGetBusinessQuery({});
+  const { data: wallet } = useGetWalletQuery({});
+
   return (
-    <section className="max-w-[1640px] flex flex-col p-4 space-y-6  md:h-screen overflow-y-scroll">
+    <section className="max-w-[1640px] flex flex-col p-4 space-y-6  md:h-full overflow-y-scroll">
       <span>
         <h2 className="text-[25px] font-bold mb-1"> Welcome Hope</h2>
         <p className="text-[16px] text-[#7C8493]">
@@ -23,13 +27,17 @@ const Dashbord = () => {
         <span className="p-4 bg-[#0AA07B26] rounded-[20px] space-y-2">
           <h1 className="text-xl font-semibold">Total Businesses </h1>
           <p className="text-sm">Total Business in Pursbusiness</p>
-          <p className="text-xl font-semibold text-[#25324B]">4,075</p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {business?.totalbusiness}
+          </p>
         </span>
 
         <span className="p-4 bg-[#F6513B26]  rounded-3xl space-y-2">
           <h1 className="text-xl font-semibold">Total Inactive Businesses</h1>
           <p className="text-sm">Total numbers of businesses deactivated </p>
-          <p className="text-xl font-semibold text-[#25324B]">30</p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {business?.inactivebusiness}
+          </p>
         </span>
 
         <span className="p-4  bg-[#3180E726] rounded-3xl space-y-2">
@@ -37,7 +45,9 @@ const Dashbord = () => {
           <p className="text-sm text-[#5542F6]">
             Total Active Businesses in Pursbusiness{" "}
           </p>
-          <p className="text-xl font-semibold text-[#25324B]">40</p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {business?.activebusiness}
+          </p>
         </span>
       </div>
       <div className="grid lg:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">
@@ -58,7 +68,7 @@ const Dashbord = () => {
             <h1 className="text-[20px] text-[#25324B]">Revenue </h1>
             <p className="text-sm text-[#7C8493]">Total amount made</p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              ₦80,000,075,300
+              {wallet?.data?.totalRevenueBalance}
             </p>
           </span>
 
@@ -68,7 +78,7 @@ const Dashbord = () => {
               Total Amount in Pursbusiness wallet{" "}
             </p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              ₦40,000,075,300
+              {wallet?.data?.totalBalance}
             </p>
           </span>
 
@@ -78,7 +88,7 @@ const Dashbord = () => {
               Total Amount in Pursbusiness wallet
             </p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              ₦10,000,075,300
+              {wallet?.data?.totalProfit}
             </p>
           </span>
         </div>

@@ -3,6 +3,7 @@ import { ApiSlice } from "@/services/Api";
 
 const rootReducer = combineReducers({
   [ApiSlice.reducerPath]: ApiSlice.reducer,
+
 });
 
 export const createStore = () =>
