@@ -7,8 +7,8 @@ import { useGetBusinessQuery, useGetWalletQuery } from "@/services/authService";
 
 const Dashbord = () => {
   const date = new Date();
-  const { data: business } = useGetBusinessQuery({});
-  const { data: wallet } = useGetWalletQuery({});
+  const { data: business,isLoading:isLoadingBusiness } = useGetBusinessQuery({});
+  const { data: wallet,isLoading:isLoadingWallet } = useGetWalletQuery({});
 
   return (
     <section className="max-w-[1640px] flex flex-col p-4 space-y-6  md:h-full overflow-y-scroll">
@@ -28,7 +28,7 @@ const Dashbord = () => {
           <h1 className="text-xl font-semibold">Total Businesses </h1>
           <p className="text-sm">Total Business in Pursbusiness</p>
           <p className="text-xl font-semibold text-[#25324B]">
-            {business?.totalbusiness}
+            {isLoadingBusiness?<span className="loading loading-dots loading-xs"></span>:business?.totalbusiness}
           </p>
         </span>
 
@@ -36,7 +36,7 @@ const Dashbord = () => {
           <h1 className="text-xl font-semibold">Total Inactive Businesses</h1>
           <p className="text-sm">Total numbers of businesses deactivated </p>
           <p className="text-xl font-semibold text-[#25324B]">
-            {business?.inactivebusiness}
+            {isLoadingBusiness?<span className="loading loading-dots loading-xs"></span>:business?.inactivebusiness}
           </p>
         </span>
 
@@ -46,7 +46,7 @@ const Dashbord = () => {
             Total Active Businesses in Pursbusiness{" "}
           </p>
           <p className="text-xl font-semibold text-[#25324B]">
-            {business?.activebusiness}
+            {isLoadingBusiness?<span className="loading loading-dots loading-xs"></span>:business?.activebusiness}
           </p>
         </span>
       </div>
@@ -68,7 +68,7 @@ const Dashbord = () => {
             <h1 className="text-[20px] text-[#25324B]">Revenue </h1>
             <p className="text-sm text-[#7C8493]">Total amount made</p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              {wallet?.data?.totalRevenueBalance}
+              {isLoadingWallet?<span className="loading loading-dots loading-xs"></span>:wallet?.data?.totalRevenueBalance}
             </p>
           </span>
 
@@ -78,7 +78,7 @@ const Dashbord = () => {
               Total Amount in Pursbusiness wallet{" "}
             </p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              {wallet?.data?.totalBalance}
+              {isLoadingWallet?<span className="loading loading-dots loading-xs"></span>:wallet?.data?.totalBalance}
             </p>
           </span>
 
@@ -88,7 +88,7 @@ const Dashbord = () => {
               Total Amount in Pursbusiness wallet
             </p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              {wallet?.data?.totalProfit}
+              {isLoadingWallet?<span className="loading loading-dots loading-xs"></span>:wallet?.data?.totalProfit}
             </p>
           </span>
         </div>

@@ -26,12 +26,9 @@ const Login = () => {
     login(formData)
       .unwrap()
       .then((res) => {
-        console.log(res);
-        message.success("user logged in successfully");
         replace("/dashboard");
       })
       .catch((err) => {
-        console.log(err);
         message.error(err?.data?.responseDescription || "something went wrong");
       });
   };

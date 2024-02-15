@@ -38,7 +38,11 @@ const authSlice = ApiSlice.enhanceEndpoints({
         method: "GET",
       }),
     }),
- 
+    getUser: builder.query({
+      query: () => ({
+        url: "/api/v1/user",
+      }),
+    }),
     // profile: builder.query({
     //   query: () => ({
     //     url: "user/me",
@@ -61,5 +65,6 @@ export const {
   useLoginMutation,
   useRefreshMutation,
   useGetBusinessQuery,
-  useGetWalletQuery
+  useGetWalletQuery,
+  useGetUserQuery
 } = authSlice;
