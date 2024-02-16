@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   CustomTable as Table,
 } from "@/lib/AntdComponents";
@@ -9,6 +9,7 @@ import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import {  TransactionTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
+import { useLazyGetTransactionsQuery } from "@/services/transactionSlice";
 
 interface DataType {
   id: number;
@@ -24,6 +25,10 @@ export interface TableParams {
 }
 
 const TransactionTable = () => {
+  const [fetchTransactions,{isLoading,data:transactions}] = useLazyGetTransactionsQuery();
+  useEffect(()=>{
+    fetchTransactions({})
+  },[])
   const [Data, setData] = useState<DataType[]>(TransactionTableData);
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
@@ -124,9 +129,10 @@ const TransactionTable = () => {
       <div className=" overflow-x-auto ">
         <Table
           columns={columns}
-          dataSource={Data}
+          dataSource={transactions?.data}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
+          loading={isLoading}
         />
       </div>
       <p className="text-[#000]  font-semibold  space-x-3 flex items-center justify-center">
