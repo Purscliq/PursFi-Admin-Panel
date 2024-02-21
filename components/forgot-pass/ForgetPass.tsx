@@ -1,4 +1,5 @@
 "use client";
+import { useState, FormEventHandler } from "react";
 import logo from "@/assets/logo.svg";
 import {
   CustomInput as Input,
@@ -6,11 +7,27 @@ import {
 } from "@/lib/AntdComponents";
 import Image from "next/image";
 import Link from "next/link";
+import { useForgotPasswordMutation } from "@/services/authService";
+import { message } from "antd";
+import { useRouter } from "next/navigation";
 // import { message, Alert } from "antd";
 
 const ForgetPass = () => {
-  //   const [alert, setAlert] = useState("");
-
+  const [email, setEmail] = useState("");
+  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
+  const { replace } = useRouter();
+  const handleSubmit: FormEventHandler = (e) => {
+    e.preventDefault();
+    forgotPassword({ email })
+      .unwrap()
+      .then((res) => {
+        setEmail("");
+        replace("/forgot-password-step2");
+      })
+      .catch((err) => {
+        message.error(err?.data?.message || "an error occurred");
+      });
+  };
   return (
     <div className="min-h-screen flex flex-col  max-w-[1640px] bg-[#FAFAFA]">
       <div className=" mx-auto w-full p-3">
@@ -26,7 +43,7 @@ const ForgetPass = () => {
             Enter the email associated with your account and we’ll send an email
             with instruction to reset your Password
           </p>
-          <form className="w-full space-y-6 mt-8">
+          <form onSubmit={handleSubmit} className="w-full space-y-6 mt-8">
             <div className="w-full flex flex-col items-start justify-start gap-[0.4rem]">
               <label
                 htmlFor="email"
@@ -40,12 +57,15 @@ const ForgetPass = () => {
                 id="email"
                 type="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <Button
               htmlType="submit"
               type="primary"
               className="!h-[3rem] !bg-Primary w-full"
+              loading={isLoading}
             >
               Send reset link
             </Button>

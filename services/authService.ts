@@ -21,7 +21,28 @@ const authSlice = ApiSlice.enhanceEndpoints({
     }),
     refresh: builder.mutation({
       query: (body) => ({
-        url: "login/refresh",
+        url: "/api/v1/login/refresh",
+        method: "POST",
+        body,
+      }),
+    }),
+    forgotPassword: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/password/forgot",
+        body,
+        method: "POST",
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/password/reset",
+        method: "POST",
+        body,
+      }),
+    }),
+    changePassword: builder.mutation({
+      query: (body) => ({
+        url: "/api/v1/password/change",
         method: "POST",
         body,
       }),
@@ -66,5 +87,8 @@ export const {
   useRefreshMutation,
   useGetBusinessQuery,
   useGetWalletQuery,
-  useGetUserQuery
+  useGetUserQuery,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+  useChangePasswordMutation,
 } = authSlice;
