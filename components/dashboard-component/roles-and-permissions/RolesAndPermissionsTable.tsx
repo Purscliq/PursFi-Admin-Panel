@@ -11,6 +11,7 @@ import { RolesAndPermissionsTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import { FiEdit } from "react-icons/fi";
 import AddMembersModal from "./AddMembersModal";
+import { useGetRolesQuery } from "@/services/administrationService";
 
 interface DataType {
   id: number;
@@ -28,6 +29,7 @@ const RolesAndPermissionsTable = () => {
   const [RolesAndPermissionsData, setRolesAndPermissionsData] = useState<
     DataType[]
   >(RolesAndPermissionsTableData);
+  const { data: roles, isLoading } = useGetRolesQuery({});
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
