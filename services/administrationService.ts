@@ -6,38 +6,38 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
   endpoints: (builder) => ({
     createAdministration: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/register/admin",
+        url: "/register/admin",
         method: "POST",
         body,
       }),
     }),
     createRole: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/roles/create",
+        url: "/roles/create",
         method: "POST",
         body,
       }),
     }),
     updateRole: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/roles/update",
+        url: "/roles/update",
         body,
         method: "POST",
       }),
     }),
     getRoles: builder.query({
       query: () => ({
-        url: "/api/v1/roles",
+        url: "/roles",
       }),
     }),
     getAdmins: builder.query({
       query: () => ({
-        url: "/api/v1/roles/admin",
+        url: "/roles/admin",
       }),
     }),
     getAdminDetails: builder.query({
       query: ({ id }) => ({
-        url: `/api/v1/roles/admin/${id}`,
+        url: `/roles/admin/${id}`,
       }),
     }),
     // profile: builder.query({

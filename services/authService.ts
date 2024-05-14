@@ -6,62 +6,61 @@ const authSlice = ApiSlice.enhanceEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/login",
+        url: "/login",
         method: "POST",
         body,
       }),
       onQueryStarted(id, { dispatch, queryFulfilled }) {
         queryFulfilled
           .then((apiResponse) => {
-            localStorage.setItem("refresh", apiResponse.data?.refreshToken);
-            localStorage.setItem("token", apiResponse.data?.token);
+            localStorage.setItem("token", apiResponse.data?.data?.token);
           })
           .catch(() => {});
       },
     }),
     refresh: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/login/refresh",
+        url: "/login/refresh",
         method: "POST",
         body,
       }),
     }),
     forgotPassword: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/password/forgot",
+        url: "/password/forgot",
         body,
         method: "POST",
       }),
     }),
     resetPassword: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/password/reset",
+        url: "/password/reset",
         method: "POST",
         body,
       }),
     }),
     changePassword: builder.mutation({
       query: (body) => ({
-        url: "/api/v1/password/change",
+        url: "/password/change",
         method: "POST",
         body,
       }),
     }),
     getBusiness: builder.query({
       query: () => ({
-        url: "/api/v1/business",
+        url: "/business",
         method: "GET",
       }),
     }),
     getWallet: builder.query({
       query: () => ({
-        url: "/api/v1/Wallet/balance",
+        url: "/Wallet/balance",
         method: "GET",
       }),
     }),
     getUser: builder.query({
       query: () => ({
-        url: "/api/v1/user",
+        url: "/user",
       }),
     }),
     // profile: builder.query({

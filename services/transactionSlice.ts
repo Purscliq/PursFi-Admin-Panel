@@ -6,13 +6,11 @@ const transactionSlice = ApiSlice.enhanceEndpoints({
   endpoints: (builder) => ({
     getTransactions: builder.query({
       query: () => ({
-        url: "/api/v1/transaction/history",
+        url: "/transaction/history",
       }),
     }),
   }),
 });
 
-export const {
-    useGetTransactionsQuery,
-    useLazyGetTransactionsQuery
-} = transactionSlice;
+export const { useGetTransactionsQuery, useLazyGetTransactionsQuery } =
+  transactionSlice;
