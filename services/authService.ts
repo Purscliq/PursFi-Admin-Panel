@@ -1,4 +1,5 @@
 import { ApiSlice } from "./Api";
+import { updateUser, logOut } from "@/store/userSlice";
 
 const authSlice = ApiSlice.enhanceEndpoints({
   addTagTypes: ["profile" as const, "business" as const],
@@ -27,21 +28,21 @@ const authSlice = ApiSlice.enhanceEndpoints({
     }),
     forgotPassword: builder.mutation({
       query: (body) => ({
-        url: "/password/forgot",
+        url: "/forgot-password",
         body,
         method: "POST",
       }),
     }),
     resetPassword: builder.mutation({
       query: (body) => ({
-        url: "/password/reset",
+        url: "/reset-password",
         method: "POST",
         body,
       }),
     }),
     changePassword: builder.mutation({
       query: (body) => ({
-        url: "/password/change",
+        url: "/settings/change-password",
         method: "POST",
         body,
       }),
@@ -54,13 +55,29 @@ const authSlice = ApiSlice.enhanceEndpoints({
     }),
     getWallet: builder.query({
       query: () => ({
-        url: "/Wallet/balance",
+        url: "/Wallet/total/balance",
         method: "GET",
       }),
     }),
     getUser: builder.query({
       query: () => ({
-        url: "/user",
+        url: "/profile",
+      }),
+      onQueryStarted(id, { dispatch, queryFulfilled }) {
+        queryFulfilled
+          .then((apiResponse) => {
+            dispatch(updateUser(apiResponse?.data?.data));
+          })
+          .catch(() => {
+            dispatch(logOut());
+          });
+      },
+    }),
+    updateProfile: builder.mutation({
+      query: (body) => ({
+        url: "/settings/update-profile",
+        body,
+        method: "PUT",
       }),
     }),
     // profile: builder.query({

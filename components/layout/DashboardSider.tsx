@@ -12,6 +12,7 @@ import {
 } from "./DashData";
 import { CustomMenu as Menu } from "@/lib/AntdComponents";
 import { Avatar } from "antd";
+import { useAppSelector } from "@/store/hooks";
 
 const DashboardSider = () => {
   const pathName = usePathname();
@@ -19,7 +20,8 @@ const DashboardSider = () => {
   useLayoutEffect(() => {
     setActivePath(activeKeys.filter((value) => pathName.includes(value))[0]);
   }, [pathName]);
-  
+  const { user } = useAppSelector((store) => store?.user?.user);
+
   return (
     <div className="drawer-side z-10 ">
       <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -62,13 +64,14 @@ const DashboardSider = () => {
           <Avatar
             style={{ backgroundColor: "#CDA4FF" }}
             size={35}
-            className="!text-sm text-black relative"
+            className="!text-sm text-black relative uppercase"
           >
-            AM{" "}
+            {user?.name.split(" ")[0].charAt(0)}
+            {user?.name.split(" ")[1].charAt(0)}
           </Avatar>
           <span className="text-sm">
-            <p className=" text-[16px]">Ayomide Mayo</p>
-            <p className="text-[#202430] text-sm">Ayomidemayo@pursfi.ng</p>
+            <p className=" text-[16px] capitalize">{user?.name}</p>
+            <p className="text-[#202430] text-sm">{user?.email}</p>
           </span>
         </summary>
       </aside>

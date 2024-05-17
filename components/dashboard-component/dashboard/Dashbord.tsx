@@ -1,15 +1,26 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import DashboardChart from "./DashboardChart";
 import DashboardTable from "./DashboardTable";
 import { CustomSegment as Segmented } from "@/lib/AntdComponents";
 import { useGetBusinessQuery, useGetWalletQuery } from "@/services/authService";
+import {
+  useGetWalletBalanceQuery,
+  useGetTotalBalanceQuery,
+  useGetTransactionsMutation,
+} from "@/services/transactionSlice";
 
 const Dashbord = () => {
   const date = new Date();
-  const { data: business,isLoading:isLoadingBusiness } = useGetBusinessQuery({});
-  const { data: wallet,isLoading:isLoadingWallet } = useGetWalletQuery({});
-
+  const { data: business, isLoading: isLoadingBusiness } = useGetBusinessQuery(
+    {}
+  );
+  const [fetchTransaction, {}] = useGetTransactionsMutation({});
+  const { data: wallet, isLoading: isLoadingWallet } = useGetWalletBalanceQuery(
+    {}
+  );
+  const { data: totalWallet, isLoading: isLoadingTotalWallet } =
+    useGetTotalBalanceQuery({});
   return (
     <section className="max-w-[1640px] flex flex-col p-4 space-y-6  md:h-full overflow-y-scroll">
       <span>
@@ -28,7 +39,11 @@ const Dashbord = () => {
           <h1 className="text-xl font-semibold">Total Businesses </h1>
           <p className="text-sm">Total Business in Pursbusiness</p>
           <p className="text-xl font-semibold text-[#25324B]">
-            {isLoadingBusiness?<span className="loading loading-dots loading-xs"></span>:business?.totalbusiness}
+            {isLoadingBusiness ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              business?.totalbusiness
+            )}
           </p>
         </span>
 
@@ -36,7 +51,11 @@ const Dashbord = () => {
           <h1 className="text-xl font-semibold">Total Inactive Businesses</h1>
           <p className="text-sm">Total numbers of businesses deactivated </p>
           <p className="text-xl font-semibold text-[#25324B]">
-            {isLoadingBusiness?<span className="loading loading-dots loading-xs"></span>:business?.inactivebusiness}
+            {isLoadingBusiness ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              business?.inactivebusiness
+            )}
           </p>
         </span>
 
@@ -46,7 +65,11 @@ const Dashbord = () => {
             Total Active Businesses in Pursbusiness{" "}
           </p>
           <p className="text-xl font-semibold text-[#25324B]">
-            {isLoadingBusiness?<span className="loading loading-dots loading-xs"></span>:business?.activebusiness}
+            {isLoadingBusiness ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              business?.activebusiness
+            )}
           </p>
         </span>
       </div>
@@ -68,7 +91,11 @@ const Dashbord = () => {
             <h1 className="text-[20px] text-[#25324B]">Revenue </h1>
             <p className="text-sm text-[#7C8493]">Total amount made</p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              {isLoadingWallet?<span className="loading loading-dots loading-xs"></span>:wallet?.data?.totalRevenueBalance}
+              {isLoadingWallet ? (
+                <span className="loading loading-dots loading-xs"></span>
+              ) : (
+                wallet?.data?.totalRevenueBalance
+              )}
             </p>
           </span>
 
@@ -78,7 +105,11 @@ const Dashbord = () => {
               Total Amount in Pursbusiness wallet{" "}
             </p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              {isLoadingWallet?<span className="loading loading-dots loading-xs"></span>:wallet?.data?.totalBalance}
+              {isLoadingWallet ? (
+                <span className="loading loading-dots loading-xs"></span>
+              ) : (
+                wallet?.data?.totalBalance
+              )}
             </p>
           </span>
 
@@ -88,7 +119,11 @@ const Dashbord = () => {
               Total Amount in Pursbusiness wallet
             </p>
             <p className="text-[36px] font-semibold text-[#25324B]">
-              {isLoadingWallet?<span className="loading loading-dots loading-xs"></span>:wallet?.data?.totalProfit}
+              {isLoadingWallet ? (
+                <span className="loading loading-dots loading-xs"></span>
+              ) : (
+                wallet?.data?.totalProfit
+              )}
             </p>
           </span>
         </div>

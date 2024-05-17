@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 const user: Record<string, any> = {};
-const wallet: Record<string, any> = {};
-const business: Record<string, any> = {};
 const initialState = {
   logOutAction: false,
   networkError: false,

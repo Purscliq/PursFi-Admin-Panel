@@ -1,6 +1,13 @@
 "use client";
 import { SelectProps } from "antd";
-import { CustomSelect as Select } from "@/lib/AntdComponents";
+import {
+  CustomSelect as Select,
+  CustomPasswordInput as PasswordInput,
+  CustomInput as Input,
+  CustomButton as Button,
+} from "@/lib/AntdComponents";
+import { useChangePasswordMutation } from "@/services/authService";
+import { useAppSelector } from "@/store/hooks";
 const Profile = () => {
   const options: SelectProps["options"] = [
     {
@@ -12,7 +19,7 @@ const Profile = () => {
       value: "EndUser",
     },
   ];
-
+  const profile = useAppSelector((store) => store.user.user);
   const handleChange = (value: string[]) => {
     console.log(`selected ${value}`);
   };
@@ -26,7 +33,7 @@ const Profile = () => {
       </span>
       <div className=" w-full rounded-md">
         {/* First Name Section */}
-        <div className="mb-4 p-2 grid grid-cols-[400px,1fr] gap-6 items-center">
+        <div className="mb-4 p-2 grid grid-cols-[400px,1fr] gap-6 items-start">
           <div className="text-sm flex-col flex">
             <h1 className="font-semibold">Personal Details</h1>{" "}
           </div>
@@ -35,22 +42,26 @@ const Profile = () => {
               <label htmlFor="firstName" className="font-semibold text-sm">
                 Full Name
               </label>
-              <input
+              <Input
                 type="text"
                 id="firstName"
                 placeholder="Full Name"
                 className="  w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
+                value={profile?.user?.name}
+                disabled
               />
             </div>
             <div className="w-full  space-y-1">
               <label htmlFor="firstName" className="font-semibold text-sm">
                 Email
               </label>
-              <input
+              <Input
                 type="text"
                 id="lastName"
                 placeholder="Email Address"
                 className="w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
+                value={profile?.user?.email}
+                disabled
               />
             </div>
             <div className="w-full  space-y-1">
@@ -62,17 +73,16 @@ const Profile = () => {
                 allowClear
                 style={{ width: "100%", height: "40px" }}
                 placeholder="Please select"
-                defaultValue={["Operations", "Admin"]}
-                onChange={handleChange}
-                options={options}
+                value={profile?.roles?.map((e: any) => e?.name)}
+                disabled
               />
             </div>
           </div>
         </div>
         <hr />
         {/* pass Section */}
-        <div className="mb-4 p-2 grid grid-cols-[400px,1fr] gap-6 items-center">
-          <div className="text-sm flex-col flex">
+        <div className="mb-4 p-2 grid grid-cols-[400px,1fr] gap-6 items-start">
+          <div className="text-sm flex-col flex justify-start items-start">
             <h1 className="font-semibold">New Password</h1>{" "}
             <span className="text-sm mt-2">
               Manage your password to make sure it is safe{" "}
@@ -83,9 +93,9 @@ const Profile = () => {
               <label htmlFor="password" className="font-semibold text-sm">
                 Old Password
               </label>
-              <input
+              <PasswordInput
                 type="password"
-                id="firstName"
+                name="old_password"
                 className="  w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
               />
             </div>
@@ -93,16 +103,29 @@ const Profile = () => {
               <label htmlFor="firstName" className="font-semibold text-sm">
                 New Password
               </label>
-              <input
+              <PasswordInput
                 type="password"
-                id="lastName"
+                name="password"
+                className="w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
+              />
+            </div>
+            <div className="w-full  space-y-1">
+              <label htmlFor="firstName" className="font-semibold text-sm">
+                Confirm Password
+              </label>
+              <PasswordInput
+                type="password"
+                name="password_confrimation"
                 className="w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
               />
             </div>
             <div className="flex justify-center mx-auto items-end my-3">
-              <button className="btn w-[400px] bg-black hover:bg-black text-white">
+              <Button
+                type="primary"
+                className="btn w-[400px] !bg-black hover:bg-black text-white"
+              >
                 Update Password
-              </button>
+              </Button>
             </div>
           </div>
         </div>

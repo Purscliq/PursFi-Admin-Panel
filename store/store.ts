@@ -1,9 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { ApiSlice } from "@/services/Api";
+import userSlice from "./userSlice";
 
 const rootReducer = combineReducers({
   [ApiSlice.reducerPath]: ApiSlice.reducer,
-
+  [userSlice.reducerPath]: userSlice.reducer,
 });
 
 export const createStore = () =>
