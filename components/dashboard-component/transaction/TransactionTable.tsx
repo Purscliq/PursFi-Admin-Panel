@@ -1,15 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  CustomTable as Table,
-} from "@/lib/AntdComponents";
+import { CustomTable as Table } from "@/lib/AntdComponents";
 import { CiSearch } from "react-icons/ci";
 import { LuListFilter } from "react-icons/lu";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
-import {  TransactionTableData } from "../content";
+import { TransactionTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
-import { useLazyGetTransactionsQuery } from "@/services/transactionSlice";
+import { useGetTransactionsMutation } from "@/services/transactionSlice";
 
 interface DataType {
   id: number;
@@ -25,10 +23,12 @@ export interface TableParams {
 }
 
 const TransactionTable = () => {
-  const [fetchTransactions,{isLoading,data:transactions}] = useLazyGetTransactionsQuery();
-  useEffect(()=>{
-    fetchTransactions({})
-  },[])
+  const [fetchTransactions, { isLoading, data: transactions }] =
+    useGetTransactionsMutation();
+  
+  useEffect(() => {
+    fetchTransactions({});
+  }, []);
   const [Data, setData] = useState<DataType[]>(TransactionTableData);
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {

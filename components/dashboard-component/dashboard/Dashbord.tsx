@@ -94,7 +94,7 @@ const Dashbord = () => {
               {isLoadingWallet ? (
                 <span className="loading loading-dots loading-xs"></span>
               ) : (
-                wallet?.data?.totalRevenueBalance
+                Number(wallet?.totalRevenueBalance || 0).toLocaleString()
               )}
             </p>
           </span>
@@ -108,7 +108,7 @@ const Dashbord = () => {
               {isLoadingWallet ? (
                 <span className="loading loading-dots loading-xs"></span>
               ) : (
-                wallet?.data?.totalBalance
+                Number(wallet?.totalBalance || 0).toLocaleString()
               )}
             </p>
           </span>
@@ -122,7 +122,7 @@ const Dashbord = () => {
               {isLoadingWallet ? (
                 <span className="loading loading-dots loading-xs"></span>
               ) : (
-                wallet?.data?.totalProfit
+                Number(wallet?.totalProfit || 0).toLocaleString()
               )}
             </p>
           </span>

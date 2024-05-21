@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   CustomSegment as Segmented,
@@ -7,6 +8,7 @@ import TransactionChart from "./TransactionChart";
 import { Progress } from "antd";
 import TransactionTable from "./TransactionTable";
 import TopClient from "./TopClient";
+import { useGetTransactionSummaryQuery } from "@/services/transactionSlice";
 const progressData = [
   { label: "Airtime/ Data", percentage: 80 },
   { label: "Cable TV", percentage: 70 },
@@ -40,6 +42,8 @@ const ProgressItem = ({
 );
 const Transaction = () => {
   const date = new Date();
+  const { data: transactionSummary, isLoading: isLoadingSummary } =
+    useGetTransactionSummaryQuery({});
   return (
     <section className="max-w-[1640px] flex flex-col bg-[#FAFAFA] p-4 space-y-6  md:h-screen overflow-y-scroll">
       <span>
@@ -53,13 +57,36 @@ const Transaction = () => {
           })}
         </p>
       </span>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-[30px]">
+      <div className="grid md:grid-cols-4 grid-cols-1 gap-[30px]">
+        <span className="p-4 bg-[#0AA07B26] rounded-[20px] space-y-2">
+          <h1 className="text-xl font-semibold">Total Transactions </h1>
+          <p className="text-sm text-[#5542F6]">
+            Total number of customer in Gox
+          </p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {isLoadingSummary ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              Number(
+                transactionSummary?.totalTransactions || 0
+              ).toLocaleString()
+            )}
+          </p>
+        </span>
         <span className="p-4 bg-[#0AA07B26] rounded-[20px] space-y-2">
           <h1 className="text-xl font-semibold">Successful Transactions </h1>
           <p className="text-sm text-[#5542F6]">
             Total number of customer in Gox
           </p>
-          <p className="text-xl font-semibold text-[#25324B]">4,075</p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {isLoadingSummary ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              Number(
+                transactionSummary?.totalCompletedTransactions || 0
+              ).toLocaleString()
+            )}
+          </p>
         </span>
 
         <span className="p-4 bg-[#F6513B26]  rounded-3xl space-y-2">
@@ -67,7 +94,15 @@ const Transaction = () => {
           <p className="text-sm text-[#5542F6]">
             Total number of user under this age{" "}
           </p>
-          <p className="text-xl font-semibold text-[#25324B]">30</p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {isLoadingSummary ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              Number(
+                transactionSummary?.totalFailedTransactions || 0
+              ).toLocaleString()
+            )}
+          </p>
         </span>
 
         <span className="p-4  bg-[#3180E726] rounded-3xl space-y-2">
@@ -75,7 +110,15 @@ const Transaction = () => {
           <p className="text-sm text-[#7C8493]">
             Total number of user under this age{" "}
           </p>
-          <p className="text-xl font-semibold text-[#25324B]">40</p>
+          <p className="text-xl font-semibold text-[#25324B]">
+            {isLoadingSummary ? (
+              <span className="loading loading-dots loading-xs"></span>
+            ) : (
+              Number(
+                transactionSummary?.totalPendingTransactions || 0
+              ).toLocaleString()
+            )}
+          </p>
         </span>
       </div>
       <div className="grid lg:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-full p-3">

@@ -10,6 +10,7 @@ import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
 import { TransactionClient } from "../content";
+import { useGetTopClientsQuery } from "@/services/transactionSlice";
 
 interface DataType {
   id: number;
@@ -17,10 +18,9 @@ interface DataType {
   account: string;
 }
 
-
-
 const TopClient = () => {
   const [Data, setData] = useState<DataType[]>(TransactionClient);
+  const { data: topClients, isLoading } = useGetTopClientsQuery({});
 
   const columns: ColumnsType<DataType> = [
     {
@@ -54,10 +54,7 @@ const TopClient = () => {
       </div>
 
       <div className=" overflow-x-auto ">
-        <Table
-          columns={columns}
-          dataSource={Data}
-        />
+        <Table columns={columns} dataSource={Data} />
       </div>
       <p className="text-[#000] py-4 text-center font-semibold">View more</p>
     </div>

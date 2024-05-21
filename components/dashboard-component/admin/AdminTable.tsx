@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CustomTable as Table,
   // CustomInput as Input,
@@ -11,6 +11,10 @@ import { AdminTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import { FiEdit } from "react-icons/fi";
 import AddAdminModal from "./AddAdminModal";
+import {
+  useGetMembersQuery,
+  useLazyGetMembersQuery,
+} from "@/services/administrationService";
 
 interface DataType {
   id: number;
@@ -26,6 +30,7 @@ export interface TableParams {
 
 const PayrollTable = () => {
   const [Admindata, setAdmindata] = useState<DataType[]>(AdminTableData);
+  const [getMembers, { data, isLoading }] = useLazyGetMembersQuery();
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -89,12 +94,20 @@ const PayrollTable = () => {
 
   const handleTableChange = (pagination: TablePaginationConfig) => {
     setTableParams({
-      pagination,
+      ...tableParams,
+      pagination: {
+        ...tableParams?.pagination,
+        total: res?.data.total,
+      },
     });
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setAdmindata([]);
-    }
   };
+
+  useEffect(() => {
+    getMembers({})
+      .unwrap()
+      .then((res) => {});
+  }, []);
+
   return (
     <div className="mt-8">
       <div className="w-full md:max-h-24 md:flex justify-between px-8 py-6 bg-white">

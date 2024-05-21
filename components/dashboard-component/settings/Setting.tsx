@@ -11,11 +11,6 @@ const Setting = () => {
       label: "Profile",
       children: <Profile />,
     },
-    {
-      key: "2",
-      label: "Admin Activity",
-      children: <AdminActivitics />,
-    },
   ];
   return (
     <section className="max-w-[1640px] flex flex-col bg-[#FAFAFA] px-6 py-4 space-y-3  md:h-screen overflow-y-scroll">

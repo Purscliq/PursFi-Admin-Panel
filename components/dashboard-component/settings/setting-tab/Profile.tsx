@@ -1,5 +1,5 @@
 "use client";
-import { SelectProps } from "antd";
+import { message, SelectProps } from "antd";
 import {
   CustomSelect as Select,
   CustomPasswordInput as PasswordInput,
@@ -7,21 +7,31 @@ import {
   CustomButton as Button,
 } from "@/lib/AntdComponents";
 import { useChangePasswordMutation } from "@/services/authService";
+import { FormEventHandler, useState } from "react";
 import { useAppSelector } from "@/store/hooks";
 const Profile = () => {
-  const options: SelectProps["options"] = [
-    {
-      label: "Super Admin",
-      value: "Super Admin",
-    },
-    {
-      label: "End User",
-      value: "EndUser",
-    },
-  ];
+  const [formdata, setFormData] = useState({
+    old_password: "",
+    password: "",
+    password_confirmation: "",
+  });
   const profile = useAppSelector((store) => store.user.user);
-  const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`);
+  const [updatePassword, { isLoading }] = useChangePasswordMutation();
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    updatePassword(formdata)
+      .unwrap()
+      .then((res) => {
+        message.success("profile updated successfully");
+        setFormData({
+          old_password: "",
+          password: "",
+          password_confirmation: "",
+        });
+      })
+      .catch((err) => {
+        message.error(err?.response?.message || "an errror ocurred");
+      });
   };
   return (
     <div className="flex flex-col py-4 w-full space-y-3">
@@ -81,7 +91,10 @@ const Profile = () => {
         </div>
         <hr />
         {/* pass Section */}
-        <div className="mb-4 p-2 grid grid-cols-[400px,1fr] gap-6 items-start">
+        <form
+          onSubmit={handleSubmit}
+          className="mb-4 p-2 grid grid-cols-[400px,1fr] gap-6 items-start"
+        >
           <div className="text-sm flex-col flex justify-start items-start">
             <h1 className="font-semibold">New Password</h1>{" "}
             <span className="text-sm mt-2">
@@ -97,6 +110,14 @@ const Profile = () => {
                 type="password"
                 name="old_password"
                 className="  w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
+                value={formdata?.old_password}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+                required
               />
             </div>
             <div className="w-full  space-y-1">
@@ -107,6 +128,14 @@ const Profile = () => {
                 type="password"
                 name="password"
                 className="w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
+                value={formdata?.password}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+                required
               />
             </div>
             <div className="w-full  space-y-1">
@@ -115,20 +144,30 @@ const Profile = () => {
               </label>
               <PasswordInput
                 type="password"
-                name="password_confrimation"
+                name="password_confirmation"
                 className="w-full px-3 py-2 border border-gray-300 text-gray-800 placeholder-text-gray-900 text-sm rounded-md focus:outline-none"
+                value={formdata?.password_confirmation}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+                required
               />
             </div>
             <div className="flex justify-center mx-auto items-end my-3">
               <Button
                 type="primary"
                 className="btn w-[400px] !bg-black hover:bg-black text-white"
+                htmlType="submit"
+                loading={isLoading}
               >
                 Update Password
               </Button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

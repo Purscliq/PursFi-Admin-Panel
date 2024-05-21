@@ -6,27 +6,37 @@ const transactionSlice = ApiSlice.enhanceEndpoints({
   endpoints: (builder) => ({
     getTransactions: builder.mutation({
       query: (body) => ({
-        url: "/transaction/transaction/history",
+        url: "/transaction/history",
         body,
         method: "POST",
       }),
     }),
+    getTransactionSummary: builder.query({
+      query: () => ({
+        url: "/transaction/dashboard",
+      }),
+    }),
     getWalletBalance: builder.query({
       query: () => ({
-        url: "/transaction/wallet/total/balance",
+        url: "/wallet/total/balance",
         method: "GET",
       }),
     }),
     getTotalBalance: builder.query({
       query: () => ({
-        url: "/transaction/wallet/total-balance",
+        url: "/wallet/total-balance",
         method: "GET",
       }),
     }),
     getDashboardDetails: builder.query({
       query: () => ({
-        url: "/transaction/Wallet/dashboard",
+        url: "/Wallet/dashboard",
         method: "GET",
+      }),
+    }),
+    getTopClients: builder.query({
+      query: () => ({
+        url: "/transaction/top-clients",
       }),
     }),
   }),
@@ -40,4 +50,8 @@ export const {
   useLazyGetDashboardDetailsQuery,
   useLazyGetTotalBalanceQuery,
   useLazyGetWalletBalanceQuery,
+  useGetTransactionSummaryQuery,
+  useLazyGetTransactionSummaryQuery,
+  useGetTopClientsQuery,
+  useLazyGetTopClientsQuery,
 } = transactionSlice;

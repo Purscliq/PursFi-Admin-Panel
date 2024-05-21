@@ -43,7 +43,7 @@ const authSlice = ApiSlice.enhanceEndpoints({
     changePassword: builder.mutation({
       query: (body) => ({
         url: "/settings/change-password",
-        method: "POST",
+        method: "PUT",
         body,
       }),
     }),
