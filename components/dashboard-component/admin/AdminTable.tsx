@@ -29,7 +29,6 @@ export interface TableParams {
 }
 
 const PayrollTable = () => {
-  const [Admindata, setAdmindata] = useState<DataType[]>(AdminTableData);
   const [getMembers, { data, isLoading }] = useLazyGetMembersQuery();
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
@@ -48,23 +47,28 @@ const PayrollTable = () => {
     {
       title: "Full Name",
       sorter: true,
-      dataIndex: "fullName",
-      render: (fullName) => `${fullName}`,
+      dataIndex: "name",
+      render: (name) => `${name}`,
       width: "20%",
     },
     {
       title: "Roles",
       sorter: true,
       dataIndex: "roles",
-      render: (roles) => `${roles}`,
+      render: (roles) => <p className="capitalize">{roles[0]?.name}</p>,
       width: "20%",
     },
 
     {
       title: "Last Active",
       sorter: true,
-      dataIndex: "lastActive",
-      render: (lastActive) => `${lastActive}`,
+      dataIndex: "last_active",
+      render: (lastActive) =>
+        `${new Date(lastActive).toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        })}`,
       width: "20%",
     },
     {
@@ -72,9 +76,13 @@ const PayrollTable = () => {
       sorter: true,
       dataIndex: "status",
       // render: (status) => `${status}`,
-      render: () => (
-        <p className="text-black bg-[#2AD0621A] rounded-[5rem] py-[0.375rem] px-[0.625rem] w-max text-sm">
-          Active
+      render: (status) => (
+        <p
+          className={`text-black ${
+            status === "active" ? "bg-[#2AD0621A]" : ""
+          } rounded-[5rem] py-[0.375rem] px-[0.625rem] w-max text-sm`}
+        >
+          {status}
         </p>
       ),
       width: "20%",
@@ -93,19 +101,24 @@ const PayrollTable = () => {
   ];
 
   const handleTableChange = (pagination: TablePaginationConfig) => {
-    setTableParams({
-      ...tableParams,
-      pagination: {
-        ...tableParams?.pagination,
-        total: res?.data.total,
-      },
-    });
+    setTableParams((prev) => ({
+      ...prev,
+      pagination,
+    }));
   };
 
   useEffect(() => {
-    getMembers({})
+    getMembers({ page: tableParams?.pagination?.current, type: "admin" })
       .unwrap()
-      .then((res) => {});
+      .then((res) => {
+        setTableParams({
+          ...tableParams,
+          pagination: {
+            ...tableParams?.pagination,
+            total: res?.data.total,
+          },
+        });
+      });
   }, []);
 
   return (
@@ -139,7 +152,7 @@ const PayrollTable = () => {
       <div className="bg-white overflow-x-auto  p-2">
         <Table
           columns={columns}
-          dataSource={Admindata}
+          dataSource={data?.data?.data}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
         />

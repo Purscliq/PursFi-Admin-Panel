@@ -23,19 +23,37 @@ export interface TableParams {
 }
 
 const TransactionTable = () => {
-  const [fetchTransactions, { isLoading, data: transactions }] =
-    useGetTransactionsMutation();
-  
-  useEffect(() => {
-    fetchTransactions({});
-  }, []);
-  const [Data, setData] = useState<DataType[]>(TransactionTableData);
+  const [fetchTransactions, { isLoading, data }] = useGetTransactionsMutation();
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
       pageSize: 10,
     },
   });
+
+  const handleTableChange = (pagination: TablePaginationConfig) => {
+    setTableParams((prev) => ({
+      ...prev,
+      pagination,
+    }));
+  };
+
+  useEffect(() => {
+    fetchTransactions({
+      page: tableParams?.pagination?.current,
+      per_page: tableParams?.pagination?.pageSize,
+    })
+      .unwrap()
+      .then((res) => {
+        setTableParams({
+          ...tableParams,
+          pagination: {
+            ...tableParams?.pagination,
+            total: res?.data.total,
+          },
+        });
+      });
+  }, []);
   const columns: ColumnsType<DataType> = [
     {
       title: "Business Name",
@@ -98,14 +116,6 @@ const TransactionTable = () => {
     },
   ];
 
-  const handleTableChange = (pagination: TablePaginationConfig) => {
-    setTableParams({
-      pagination,
-    });
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setData([]);
-    }
-  };
   return (
     <div className="border border-[#D6DDEB] w-full bg-white p-4 rounded-[20px]">
       <div className="w-full md:max-h-20 md:flex justify-between items-center  py-6 ">
@@ -129,7 +139,7 @@ const TransactionTable = () => {
       <div className=" overflow-x-auto ">
         <Table
           columns={columns}
-          dataSource={transactions?.data}
+          dataSource={data?.data}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
           loading={isLoading}

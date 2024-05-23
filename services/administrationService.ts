@@ -1,7 +1,7 @@
 import { ApiSlice } from "./Api";
 
 const administrationSlice = ApiSlice.enhanceEndpoints({
-  addTagTypes: ["profile" as const, "business" as const],
+  addTagTypes: ["role" as const, "role" as const],
 }).injectEndpoints({
   endpoints: (builder) => ({
     createAdministration: builder.mutation({
@@ -13,22 +13,32 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
     }),
     createRole: builder.mutation({
       query: (body) => ({
-        url: "/roles/create",
+        url: "/roles",
         method: "POST",
         body,
       }),
+      invalidatesTags: ["role"],
     }),
     updateRole: builder.mutation({
       query: (body) => ({
-        url: "/roles/update",
-        body,
-        method: "POST",
+        url: `/roles/${body?.id}`,
+        body: body?.body,
+        method: "PUT",
       }),
+      invalidatesTags: ["role"],
     }),
     getRoles: builder.query({
       query: () => ({
         url: "/roles",
       }),
+      providesTags: ["role"],
+      transformResponse: (apiResponse: Record<string, any>) => {
+        return apiResponse?.data?.map((e: any) => ({
+          ...e,
+          value: e?.name,
+          label: e?.name,
+        }));
+      },
     }),
     getAdmins: builder.query({
       query: () => ({
@@ -44,11 +54,12 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
       query: (body) => ({
         url: "/members",
         params: {
-          count: body?.count,
+          count: 10,
           page: body?.page,
           type: body?.type,
         },
       }),
+      providesTags: ["role"],
     }),
     getSingleMember: builder.query({
       query: (id) => ({
@@ -62,21 +73,26 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
         method: "POST",
       }),
     }),
-    // profile: builder.query({
-    //   query: () => ({
-    //     url: "user/me",
-    //   }),
-    //   providesTags: ["profile"],
-    //   onQueryStarted(id, { dispatch, queryFulfilled }) {
-    //     queryFulfilled
-    //       .then((apiResponse) => {
-    //         dispatch(updateUser(apiResponse?.data?.user));
-    //       })
-    //       .catch(() => {
-    //         dispatch(logOut());
-    //       });
-    //   },
-    // }),
+    getPermissions: builder.query({
+      query: () => ({
+        url: "/permissions",
+      }),
+      transformResponse: (apiResponse: Record<string, any>) => {
+        return apiResponse?.data?.map((e: any) => ({
+          ...e,
+          value: e?.id,
+          label: e?.name,
+        }));
+      },
+    }),
+    updateMemberRole: builder.mutation({
+      query: (body) => ({
+        url: `members/${body?.id}`,
+        body: body?.body,
+        method: "PUT",
+      }),
+      invalidatesTags: ["role"],
+    }),
   }),
 });
 
@@ -95,4 +111,6 @@ export const {
   useCreateMemberMutation,
   useGetSingleMemberQuery,
   useLazyGetSingleMemberQuery,
+  useGetPermissionsQuery,
+  useUpdateMemberRoleMutation,
 } = administrationSlice;

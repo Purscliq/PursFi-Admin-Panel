@@ -9,22 +9,26 @@ import {
   useGetTotalBalanceQuery,
   useGetTransactionsMutation,
 } from "@/services/transactionSlice";
+import { useAppSelector } from "@/store/hooks";
 
 const Dashbord = () => {
   const date = new Date();
   const { data: business, isLoading: isLoadingBusiness } = useGetBusinessQuery(
     {}
   );
-  const [fetchTransaction, {}] = useGetTransactionsMutation({});
   const { data: wallet, isLoading: isLoadingWallet } = useGetWalletBalanceQuery(
     {}
   );
+  const { user } = useAppSelector((store) => store?.user?.user);
   const { data: totalWallet, isLoading: isLoadingTotalWallet } =
     useGetTotalBalanceQuery({});
   return (
     <section className="max-w-[1640px] flex flex-col p-4 space-y-6  md:h-full overflow-y-scroll">
       <span>
-        <h2 className="text-[25px] font-bold mb-1"> Welcome Hope</h2>
+        <h2 className="text-[25px] font-bold mb-1 capitalize">
+          {" "}
+          Welcome {user?.name?.split(" ")[0]}
+        </h2>
         <p className="text-[16px] text-[#7C8493]">
           Showing your Account metrics for{" "}
           {date.toLocaleString("en-US", {

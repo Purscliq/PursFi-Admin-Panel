@@ -8,6 +8,7 @@ import {
 import FilterIcon from "@/assets/svg/FilterIcon";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
+import { useGetTransactionsMutation } from "@/services/transactionSlice";
 
 interface DataType {
   name: string;
@@ -74,15 +75,8 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const getRandomuserParams = (params: TableParams) => ({
-  results: params.pagination?.pageSize,
-  page: params.pagination?.current,
-  ...params,
-});
-
 const DashboardTable = () => {
-  const [data, setData] = useState<DataType[]>();
-  const [loading, setLoading] = useState(false);
+  const [fetchTransactions, { isLoading, data }] = useGetTransactionsMutation();
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -90,35 +84,29 @@ const DashboardTable = () => {
     },
   });
 
-  const fetchData = () => {
-    setLoading(true);
-    fetch(`https://testapi.io/api/sikiru/purscliq-transaction`)
-      .then((res) => res.json())
-      .then((results) => {
-        setData(results);
-        setLoading(false);
-        setTableParams({
-          ...tableParams,
-          pagination: {
-            ...tableParams.pagination,
-            total: 200,
-          },
-        });
-      });
+  const handleTableChange = (pagination: TablePaginationConfig) => {
+    setTableParams((prev) => ({
+      ...prev,
+      pagination,
+    }));
   };
 
   useEffect(() => {
-    fetchData();
-  }, [JSON.stringify(tableParams)]);
-
-  const handleTableChange = (pagination: TablePaginationConfig) => {
-    setTableParams({
-      pagination,
-    });
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setData([]);
-    }
-  };
+    fetchTransactions({
+      page: tableParams?.pagination?.current,
+      per_page: tableParams?.pagination?.pageSize,
+    })
+      .unwrap()
+      .then((res) => {
+        setTableParams({
+          ...tableParams,
+          pagination: {
+            ...tableParams?.pagination,
+            total: res?.data.total,
+          },
+        });
+      });
+  }, []);
 
   return (
     <div className="bg-white flex flex-col gap-[1rem] p-[2%]">
@@ -139,9 +127,9 @@ const DashboardTable = () => {
       <div className="relative overflow-x-auto  sm:rounded-lg w-full">
         <Table
           columns={columns}
-          dataSource={data}
+          dataSource={data?.data}
           pagination={tableParams.pagination}
-          loading={loading}
+          loading={isLoading}
           onChange={handleTableChange}
         />
       </div>

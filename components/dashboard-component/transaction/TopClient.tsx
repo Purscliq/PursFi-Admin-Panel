@@ -26,7 +26,7 @@ const TopClient = () => {
     {
       title: "Business Name",
       sorter: true,
-      dataIndex: "businessname",
+      dataIndex: "businessName",
       render: (businessname) => `${businessname}`,
       width: "20%",
     },
@@ -34,7 +34,7 @@ const TopClient = () => {
     {
       title: "Account",
       sorter: true,
-      dataIndex: "account",
+      dataIndex: "accountNumber",
       render: (account) => `${account}`,
       width: "20%",
     },
@@ -52,11 +52,9 @@ const TopClient = () => {
           </button>
         </div>
       </div>
-
       <div className=" overflow-x-auto ">
-        <Table columns={columns} dataSource={Data} />
+        <Table columns={columns} dataSource={topClients} />
       </div>
-      <p className="text-[#000] py-4 text-center font-semibold">View more</p>
     </div>
   );
 };
