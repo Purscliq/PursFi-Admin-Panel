@@ -7,6 +7,7 @@ import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import { ChargeData } from "../content";
 import ChargeModal from "./ChargeModal";
+import { useGetChargesQuery } from "@/services/transactionSlice";
 
 interface DataType {
   id: number;
@@ -21,7 +22,7 @@ export interface TableParams {
 }
 
 const ChargeTable = () => {
-  const [chargesData, setchargesData] = useState<DataType[]>(ChargeData);
+  const { data, isLoading } = useGetChargesQuery({});
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -78,9 +79,6 @@ const ChargeTable = () => {
     setTableParams({
       pagination,
     });
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setchargesData([]);
-    }
   };
   return (
     <div className="mt-8">
@@ -110,15 +108,11 @@ const ChargeTable = () => {
       <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-4  p-0 border border-[#D6DDEB]">
         <Table
           columns={columns}
-          dataSource={chargesData}
+          dataSource={data?.data}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
         />
       </div>
-      <ChargeModal
-        isModalOpen={isModalOpen}
-        onclose={() => setIsModalOpen(false)}
-      />
     </div>
   );
 };

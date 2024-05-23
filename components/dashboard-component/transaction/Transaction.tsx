@@ -9,31 +9,20 @@ import { Progress } from "antd";
 import TransactionTable from "./TransactionTable";
 import TopClient from "./TopClient";
 import { useGetTransactionSummaryQuery } from "@/services/transactionSlice";
-const progressData = [
-  { label: "Airtime/ Data", percentage: 80 },
-  { label: "Cable TV", percentage: 70 },
-  { label: "Salary", percentage: 60 },
-  { label: "Transfer", percentage: 55 },
-  { label: "Cable TV", percentage: 50 },
-  { label: "Cable TV", percentage: 45 },
-  { label: "Transfer", percentage: 35 },
-  { label: "Cable TV", percentage: 30 },
-  { label: "Salary", percentage: 25 },
-  { label: "Cable TV", percentage: 20 },
-];
+import { useGetFrequentBillingQuery } from "@/services/transactionSlice";
 
 // progress item
 const ProgressItem = ({
-  label,
-  percentage,
+  billing_type,
+  count,
 }: {
-  label: string;
-  percentage: number;
+  billing_type: string;
+  count: number;
 }) => (
-  <div className="flex gap-x-4 text-[#7C8493]">
-    <p className="text-xs">{label}</p>
+  <div className="flex gap-4 text-[#7C8493]">
+    <p className="text-xs capitalize">{billing_type}</p>
     <Progress
-      percent={percentage}
+      percent={count}
       showInfo={false}
       size="small"
       strokeColor="#000"
@@ -44,6 +33,7 @@ const Transaction = () => {
   const date = new Date();
   const { data: transactionSummary, isLoading: isLoadingSummary } =
     useGetTransactionSummaryQuery({});
+  const { data } = useGetFrequentBillingQuery({});
   return (
     <section className="max-w-[1640px] flex flex-col bg-[#FAFAFA] p-4 space-y-6  md:h-screen overflow-y-scroll">
       <span>
@@ -210,11 +200,14 @@ const Transaction = () => {
           </div>
           <TransactionChart />
         </div>
-        <div className="grid grid-cols-1 gap-[8px] h-full bg-white border border-gray-200 rounded-[20px] p-3">
-          {progressData.map((data, index) => (
-            <ProgressItem key={index} {...data} />
+        <div className="flex flex-col h-fit bg-white border border-gray-200 rounded-[20px] p-3">
+          {data?.data?.map((data: Record<string, any>, index: number) => (
+            <ProgressItem
+              billing_type={data?.billing_type}
+              count={data?.count}
+              key={index}
+            />
           ))}
-          <p className="text-[#000] p-2 text-center font-semibold">View more</p>
         </div>
       </div>
       <div className="grid lg:grid-cols-[716px_1fr] grid-cols-1 gap-[35px] h-[484px] p-3">

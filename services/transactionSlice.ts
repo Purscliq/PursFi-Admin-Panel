@@ -11,6 +11,13 @@ const transactionSlice = ApiSlice.enhanceEndpoints({
         method: "POST",
       }),
     }),
+    getPayments: builder.mutation({
+      query: (body) => ({
+        url: "/transaction/payments",
+        body,
+        method: "POST",
+      }),
+    }),
     getTransactionSummary: builder.query({
       query: () => ({
         url: "/transaction/dashboard",
@@ -39,6 +46,32 @@ const transactionSlice = ApiSlice.enhanceEndpoints({
         url: "/transaction/top-clients",
       }),
     }),
+    refundTransaction: builder.mutation({
+      query: (body) => ({
+        url: `/transaction/refund/${body?.reference}`,
+      }),
+    }),
+    getFrequentBilling: builder.query({
+      query: () => ({
+        url: "/transaction/frequent-bill-services",
+      }),
+    }),
+    getSingleTransaction: builder.query({
+      query: (body) => ({
+        url: `/transaction/single/transaction/${body?.reference}`,
+      }),
+    }),
+    exportToCsv: builder.mutation({
+      query: (body) => ({
+        url: "/transaction/export-payments",
+        body,
+      }),
+    }),
+    getCharges: builder.query({
+      query: () => ({
+        url: "/charges",
+      }),
+    }),
   }),
 });
 
@@ -54,4 +87,13 @@ export const {
   useLazyGetTransactionSummaryQuery,
   useGetTopClientsQuery,
   useLazyGetTopClientsQuery,
+  useExportToCsvMutation,
+  useGetFrequentBillingQuery,
+  useGetPaymentsMutation,
+  useGetSingleTransactionQuery,
+  useLazyGetFrequentBillingQuery,
+  useLazyGetSingleTransactionQuery,
+  useRefundTransactionMutation,
+  useGetChargesQuery,
+  useLazyGetChargesQuery,
 } = transactionSlice;

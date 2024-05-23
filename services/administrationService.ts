@@ -1,7 +1,7 @@
 import { ApiSlice } from "./Api";
 
 const administrationSlice = ApiSlice.enhanceEndpoints({
-  addTagTypes: ["role" as const, "role" as const],
+  addTagTypes: ["role" as const, "member" as const],
 }).injectEndpoints({
   endpoints: (builder) => ({
     createAdministration: builder.mutation({
@@ -59,7 +59,7 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
           type: body?.type,
         },
       }),
-      providesTags: ["role"],
+      providesTags: ["member"],
     }),
     getSingleMember: builder.query({
       query: (id) => ({
@@ -72,6 +72,7 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
         body,
         method: "POST",
       }),
+      invalidatesTags: ["member"],
     }),
     getPermissions: builder.query({
       query: () => ({
@@ -91,7 +92,7 @@ const administrationSlice = ApiSlice.enhanceEndpoints({
         body: body?.body,
         method: "PUT",
       }),
-      invalidatesTags: ["role"],
+      invalidatesTags: ["member"],
     }),
   }),
 });

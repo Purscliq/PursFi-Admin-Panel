@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   CustomTable as Table,
   // CustomInput as Input,
@@ -10,6 +10,7 @@ import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import { PaymentTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
+import { useGetPaymentsMutation } from "@/services/transactionSlice";
 
 interface DataType {
   id: number;
@@ -24,13 +25,37 @@ export interface TableParams {
 }
 
 const PaymentTable = () => {
-  const [Paymentdata, setPaymentdata] = useState<DataType[]>(PaymentTableData);
+  const [fetchPayments, { isLoading, data }] = useGetPaymentsMutation();
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
       pageSize: 10,
     },
   });
+
+  const handleTableChange = (pagination: TablePaginationConfig) => {
+    setTableParams((prev) => ({
+      ...prev,
+      pagination,
+    }));
+  };
+
+  useEffect(() => {
+    fetchPayments({
+      page: tableParams?.pagination?.current,
+      per_page: tableParams?.pagination?.pageSize,
+    })
+      .unwrap()
+      .then((res) => {
+        setTableParams({
+          ...tableParams,
+          pagination: {
+            ...tableParams?.pagination,
+            total: res?.total,
+          },
+        });
+      });
+  }, []);
   const columns: ColumnsType<DataType> = [
     {
       title: "Bank Name",
@@ -82,14 +107,6 @@ const PaymentTable = () => {
     },
   ];
 
-  const handleTableChange = (pagination: TablePaginationConfig) => {
-    setTableParams({
-      pagination,
-    });
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setPaymentdata([]);
-    }
-  };
   return (
     <div className="mt-8">
       <div className="w-full md:max-h-24 md:flex justify-between px-8 py-6 bg-white rounded-[1.25rem] border border-[#D6DDEB]">
@@ -118,7 +135,7 @@ const PaymentTable = () => {
       <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-4  p-0 border border-[#D6DDEB]">
         <Table
           columns={columns}
-          dataSource={Paymentdata}
+          dataSource={data?.data}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
         />
