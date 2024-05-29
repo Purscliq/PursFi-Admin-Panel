@@ -72,16 +72,16 @@ const Details = ({id}:{id:string}) => {
               </p>
             </span>
           </div>
-          {/* <div>
+          <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
                 Business Name
               </p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                Volt -wolf
+                {data?.data?.business_name}
               </p>
             </span>
-          </div> */}
+          </div>
           <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
@@ -97,7 +97,7 @@ const Details = ({id}:{id:string}) => {
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
                 Type
               </p>
-              <p className="text-base text-[#25324B] leading-normal font-semibold">
+              <p className="text-base text-[#25324B] leading-normal font-semibold capitalize">
                {data?.data?.type}
               </p>
             </span>
