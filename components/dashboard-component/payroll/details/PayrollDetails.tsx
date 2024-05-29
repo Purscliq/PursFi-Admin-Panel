@@ -1,14 +1,25 @@
-import Link from "next/link";
+"use client";
+import { useRouter } from "next/navigation";
 import { GoArrowLeft } from "react-icons/go";
+import { useLazyGetPayrollByIdQuery } from "@/services/payrollService";
+import { useEffect,useState } from "react";
 
-const Details = () => {
+const Details = ({id}:{id:string}) => {
+  const {back} = useRouter()
+  const [getPayrollById,{isLoading,isUninitialized,data}] = useLazyGetPayrollByIdQuery()
+  useEffect(()=>{
+    if(id) getPayrollById(id)
+  },[id])
+
+
   return (
+    <>
+    {(isLoading || isUninitialized)?
+      <div className="flex items-center justify-center h-full"><span className="loading loading-spinner loading-lg bg-black"></span></div>:
     <section className="max-w-[1640px] bg-white flex flex-col p-4  h-screen overflow-y-scroll">
       <div className="md:flex justify-between border-b pb-4">
-        <span className="flex gap-2">
-          <Link href="/refund" className="py-2" title="Back to Refunds">
-            <GoArrowLeft className="w-8 h-8" /> {""}
-          </Link>
+        <span className="flex gap-2 items-center">
+            <GoArrowLeft onClick={back} className="w-8 h-8 cursor-pointer" /> {""}
           <h2 className="text-[2.25rem] font-bold mb-1 leading-none md:leading-[3rem]">
             Payroll
           </h2>
@@ -25,7 +36,7 @@ const Details = () => {
                 Payroll Name
               </p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                Salary
+                {data?.data?.name}
               </p>
             </span>
           </div>
@@ -35,7 +46,7 @@ const Details = () => {
                 Payroll ID
               </p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                12345768699
+                {data?.data?.id}
               </p>
             </span>
           </div>
@@ -53,11 +64,15 @@ const Details = () => {
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">Date</p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                24 July 2024
+                {new Date(data?.data?.payout_date).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "2-digit",
+                    year: "numeric",
+                  })}
               </p>
             </span>
           </div>
-          <div>
+          {/* <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
                 Business Name
@@ -66,8 +81,8 @@ const Details = () => {
                 Volt -wolf
               </p>
             </span>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
                 CounterParty
@@ -76,8 +91,8 @@ const Details = () => {
                 John David Doe
               </p>
             </span>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
                 Account Number
@@ -86,10 +101,11 @@ const Details = () => {
                 01828372892
               </p>
             </span>
-          </div>
+          </div> */}
         </div>
       </section>
-    </section>
+    </section>}
+    </>
   );
 };
 

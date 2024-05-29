@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {
   CustomTable as Table,
   // CustomInput as Input,
@@ -10,6 +10,10 @@ import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import { PayrollTableData } from "../content";
 import { HiMiniChevronUpDown } from "react-icons/hi2";
 import Link from "next/link";
+import {
+  useGetPayrollQuery,
+  useLazyGetPayrollQuery,
+} from "@/services/payrollService";
 
 interface DataType {
   id: number;
@@ -24,7 +28,7 @@ export interface TableParams {
 }
 
 const PayrollTable = () => {
-  const [Payrolldata, setPayrolldata] = useState<DataType[]>(PayrollTableData);
+  const [getPayroll,{isLoading,data}] = useLazyGetPayrollQuery()
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -35,29 +39,28 @@ const PayrollTable = () => {
     {
       title: "Payroll Name",
       sorter: true,
-      dataIndex: "payrollName",
+      dataIndex: "name",
       render: (payrollName) => `${payrollName}`,
       width: "20%",
     },
     {
       title: "Payroll ID",
       sorter: true,
-      dataIndex: "payrollID",
+      dataIndex: "id",
       render: (payrollID) => `${payrollID}`,
       width: "20%",
     },
-
     {
       title: "Date",
       sorter: true,
-      dataIndex: "date",
+      dataIndex: "payout_date",
       render: (date) => `${date}`,
       width: "20%",
     },
     {
       title: "Amount",
       sorter: true,
-      dataIndex: "amount",
+      dataIndex: "payable_amount",
       render: (amount) => `${amount}`,
       width: "20%",
     },
@@ -83,13 +86,25 @@ const PayrollTable = () => {
   ];
 
   const handleTableChange = (pagination: TablePaginationConfig) => {
-    setTableParams({
+    setTableParams((prev) => ({
+      ...prev,
       pagination,
-    });
-    if (pagination.pageSize !== tableParams.pagination?.pageSize) {
-      setPayrolldata([]);
-    }
+    }));
   };
+
+  useEffect(() => {
+    getPayroll({ page: tableParams?.pagination?.current })
+      .unwrap()
+      .then((res) => {
+        setTableParams({
+          ...tableParams,
+          pagination: {
+            ...tableParams?.pagination,
+            total: res?.data.total,
+          },
+        });
+      });
+  }, []);
   return (
     <div className="mt-8">
       <div className="w-full md:max-h-24 md:flex justify-between px-8 py-6 bg-white rounded-[1.25rem] border border-[#D6DDEB]">
@@ -118,7 +133,8 @@ const PayrollTable = () => {
       <div className="bg-white rounded-[1.25rem] overflow-x-auto mt-4  p-0 border border-[#D6DDEB]">
         <Table
           columns={columns}
-          dataSource={Payrolldata}
+          dataSource={data?.data}
+          loading={isLoading}
           pagination={tableParams.pagination}
           onChange={handleTableChange}
         />
