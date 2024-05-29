@@ -56,7 +56,7 @@ const Details = ({id}:{id:string}) => {
                 Amount
               </p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                NGN 200,000.00
+                NGN {data?.data?.salaries}
               </p>
             </span>
           </div>
@@ -82,26 +82,26 @@ const Details = ({id}:{id:string}) => {
               </p>
             </span>
           </div> */}
-          {/* <div>
+          <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
-                CounterParty
+                Members
               </p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                John David Doe
+                {data?.data?.members}
               </p>
             </span>
-          </div> */}
-          {/* <div>
+          </div>
+          <div>
             <span className="space-y-2">
               <p className="text-[#7C88B1] text-[0.875rem] font-normal">
-                Account Number
+                Type
               </p>
               <p className="text-base text-[#25324B] leading-normal font-semibold">
-                01828372892
+               {data?.data?.type}
               </p>
             </span>
-          </div> */}
+          </div>
         </div>
       </section>
     </section>}
